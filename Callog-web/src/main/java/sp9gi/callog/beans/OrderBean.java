@@ -1,13 +1,18 @@
 package sp9gi.callog.beans;
 
+import sp9gi.callog.jpa.Trans;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name="order")
 @SessionScoped
 public class OrderBean implements Serializable{
+
+    private Logger logger = Logger.getLogger("Próba::OrerBean");
 
     private static final long serialVersionUID = 1L;
 
@@ -26,7 +31,18 @@ public class OrderBean implements Serializable{
 
     }
 
+    public void addData(){
+        Trans add = new Trans();
+        logger.warning("kliknięto button");
+        logger.info("klinieto przycik");
+        System.out.println("kliknieto przyciks");
+        add.addData1();
+    }
+
+
     public static class Order{
+
+        private Logger logger = Logger.getLogger("Próba::Oran");
 
         String orderNo;
         String productName;

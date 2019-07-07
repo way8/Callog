@@ -11,7 +11,7 @@
 </h:head>
 <h:body>
 
-    <h1>JSF 2 dataTable example</h1>
+    <h1>JSF 1 dataTable example</h1>
 
     <h:dataTable value="#{order.orderList}" var="o"
                  styleClass="order-table"
@@ -42,6 +42,9 @@
         </h:column>
 
     </h:dataTable>
+
+ <h:commandButton value="Wyslij" action="#{order.addData}"/>
+
 
 </h:body>
 </html>
