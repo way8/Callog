@@ -1,6 +1,6 @@
 package sp9gi.callog.beans;
 
-import sp9gi.callog.jpa.Trans;
+import sp9gi.callog.ejb.Trans;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -12,9 +12,9 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class OrderBean implements Serializable{
 
-    private Logger logger = Logger.getLogger("Próba::OrerBean");
+    private Logger logger = Logger.getLogger("order");
 
-    private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
 
     private static final Order[] orderList = new Order[] {
 
@@ -32,11 +32,18 @@ public class OrderBean implements Serializable{
     }
 
     public void addData(){
+        logger.warning("rozpoczęto dodawanie obiektu");
         Trans add = new Trans();
-        logger.warning("kliknięto button");
-        logger.info("klinieto przycik");
-        System.out.println("kliknieto przyciks");
+        logger.info("utworzono obiekt");
         add.addData1();
+        logger.info("odpalono metodę");
+    }
+
+    public void loggCheck(){
+        logger.warning("kliknięto button warning");
+        logger.info("klinieto przycik info");
+        System.out.println("kliknieto przyciks sout");
+
     }
 
 

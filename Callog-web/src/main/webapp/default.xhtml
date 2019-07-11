@@ -42,8 +42,15 @@
         </h:column>
 
     </h:dataTable>
-
+    <h:form>
  <h:commandButton value="Wyslij" action="#{order.addData}"/>
+
+    <h:commandButton value="Wyslij logger" action="#{testBean.loggCheck}"/>
+
+    <h:inputText value="#{testBean.a}"/>
+    <h:commandButton value="Wyslij" action="#{testBean.number}"/>
+Wynik:#{testBean.a}
+    </h:form>
 
 
 </h:body>
