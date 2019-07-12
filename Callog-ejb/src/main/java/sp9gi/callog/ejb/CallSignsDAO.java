@@ -1,30 +1,32 @@
 package sp9gi.callog.ejb;
 
-import sp9gi.callog.jpa.Bank;
-import sp9gi.callog.jpa.Client;
+import sp9gi.callog.jpa.CallSignsDB;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.logging.Logger;
 
-public class Trans {
-    private static Logger LOGGER = Logger.getLogger("Trans");
+public class CallSignsDAO {
+    private static Logger LOGGER = Logger.getLogger("CallSignsDAO");
     public void addData1() {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
         LOGGER.info("tworzy się nowy obiekt client");
-        Client client = new Client();
-        //  client.setId(2);
-        client.setName("sp9gi");
+        CallSignsDB ham = new CallSignsDB();
+        ham.setCall_sign("EA2DT");
+        ham.setOperator_name("Manuel");
+        ham.setBand("2m");
+        ham.setRaport_received("59");
+        ham.setRaport_send("59");
+        ham.setContact_date("2019-10-10");
+        ham.setMail("onet@interia.pl");
+        ham.setPassword("none");
 
-        Bank bank = new Bank();
-        bank.setName("QRZ");
         LOGGER.info("rozpoczęto transakcję");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist(client);
-        entityManager.persist(bank);
+        entityManager.persist(ham);
         entityManager.getTransaction().commit();
 
         entityManagerFactory.close();
