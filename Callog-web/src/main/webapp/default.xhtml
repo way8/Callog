@@ -7,7 +7,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
 >
 <h:head>
-    <h:outputStylesheet library="css" name="table-style.css"  />
+    <h:outputStylesheet library="css" name="table-style.css"/>
 </h:head>
 <h:body>
 
@@ -43,14 +43,60 @@
 
     </h:dataTable>
     <h:form>
- <h:commandButton value="Wyslij" action="#{order.addData}"/>
+        <h:commandButton value="Wyslij" action="#{order.addData}"/>
 
-    <h:commandButton value="Wyslij logger" action="#{testBean.loggCheck}"/>
+        <h:commandButton value="Wyslij logger" action="#{testBean.loggCheck}"/>
 
-    <h:inputText value="#{testBean.a}"/>
-    <h:commandButton value="Wyslij" action="#{testBean.number}"/>
-Wynik:#{testBean.a}
+        <h:inputText value="#{testBean.a}"/>
+        <h:commandButton value="Wyslij" action="#{testBean.number}"/>
+        Wynik:#{testBean.a}
     </h:form>
+
+
+    <h:dataTable value="#{order.callList}" var="c"
+                 styleClass="order-table"
+                 headerClass="order-table-header"
+                 rowClasses="order-table-odd-row,order-table-even-row"
+    >
+
+        <h:column>
+            <!-- column header -->
+            <f:facet name="header">Id</f:facet>
+            <!-- row record -->
+            #{c.id}
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Callsign</f:facet>
+            #{c.call_sign}
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Name</f:facet>
+            #{c.operator_name}
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Date</f:facet>
+            #{c.contact_date}
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Band</f:facet>
+            #{c.band}
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Report received</f:facet>
+            #{c.raport_received}
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Raport_send</f:facet>
+            #{c.raport_send}
+        </h:column>
+
+    </h:dataTable>
 
 
 </h:body>

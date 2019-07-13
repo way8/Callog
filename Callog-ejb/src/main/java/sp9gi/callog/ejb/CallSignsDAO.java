@@ -2,9 +2,13 @@ package sp9gi.callog.ejb;
 
 import sp9gi.callog.jpa.CallSignsDB;
 
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class CallSignsDAO {
@@ -31,4 +35,14 @@ public class CallSignsDAO {
 
         entityManagerFactory.close();
     }
+
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public List<CallSignsDB> getCallSigns() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        Query query = entityManager.createQuery("SELECT c FROM CallSignsDB c");
+        List<CallSignsDB> callSignsList = query.getResultList();
+        return callSignsList;
+    }
+
 }

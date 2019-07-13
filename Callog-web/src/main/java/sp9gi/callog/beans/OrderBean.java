@@ -1,9 +1,11 @@
 package sp9gi.callog.beans;
 
-import sp9gi.callog.ejb.Trans;
+import sp9gi.callog.ejb.CallSignsDAO;
+import sp9gi.callog.jpa.CallSignsDB;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -15,6 +17,9 @@ public class OrderBean implements Serializable{
     private Logger logger = Logger.getLogger("order");
 
    private static final long serialVersionUID = 1L;
+
+    private List<CallSignsDB> newsList;
+
 
     private static final Order[] orderList = new Order[] {
 
@@ -33,11 +38,13 @@ public class OrderBean implements Serializable{
 
     public void addData(){
         logger.warning("rozpoczęto dodawanie obiektu");
-        Trans add = new Trans();
+        CallSignsDAO add = new CallSignsDAO();
         logger.info("utworzono obiekt");
         add.addData1();
         logger.info("odpalono metodę");
     }
+
+
 
     public void loggCheck(){
         logger.warning("kliknięto button warning");
@@ -46,6 +53,19 @@ public class OrderBean implements Serializable{
 
     }
 
+    public List<CallSignsDB> getCallList() {
+        logger.warning("rozpoczęto dodawanie obiektu");
+        CallSignsDAO gett = new CallSignsDAO();
+        logger.info("utworzono obiekt");
+        gett.getCallSigns();
+        logger.info("odpalono metodę");
+
+        return newsList;
+    }
+
+    public void setNewsList(List<CallSignsDB> newsList) {
+        this.newsList = newsList;
+    }
 
     public static class Order{
 
