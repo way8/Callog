@@ -39,12 +39,21 @@ public class CallSignsDB {
     @Column(name = "password")
     private String password;
 
+    public CallSignsDB() {
+    }
 
-
+    public CallSignsDB(String call_sign, String operator_name, String contact_date, String band, String raport_send, String raport_received, String mail, String password) {
+        this.call_sign = call_sign;
+        this.operator_name = operator_name;
+        this.contact_date = contact_date;
+        this.band = band;
+        this.raport_send = raport_send;
+        this.raport_received = raport_received;
+        this.mail = mail;
+        this.password = password;
+    }
 
     //Getters and Setters
-
-
     public String getCall_sign() {
         return call_sign;
     }

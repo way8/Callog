@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head><title>JSF 2.0: Strona startowa</title>
+</h:head>
+<h:body>
+    <div align="center">
+        <h1>Wprowadź sowje dane </h1>
+
+        <fieldset>
+            <legend>Oferty pozycjonowania</legend>
+
+            <h:form>
+                <h:messages styleClass="error"/>
+                <table>
+                    <tr>
+                        <td>Callsign:
+                            <h:inputText value="#{newCallBean.call_sign}"
+                                         required="true"
+                                         requiredMessage="Musisz podać znak"/>
+                                         <!--TODO add regex patter-->
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Operator name:
+                            <h:inputText value="#{newCallBean.operator_name}"
+                                         required="true"
+                                         requiredMessage="Musisz podać"/></td>
+                    </tr>
+                    <tr>
+                        <td>Data łączności:
+                            $<h:inputText value="#{newCallBean.contact_date}"
+                                          required="true"
+                                          requiredMessage="Musisz podać kwotę oferty"
+                                          converterMessage="Pole musi być liczbą"/></td>
+                    </tr>
+                    <tr>
+                        <td>Band:
+                            <h:inputText value="#{newCallBean.band}"
+                                         required="true"
+                                         requiredMessage="Musisz podać okres oferty"
+                                         converterMessage="Pole musi być liczbą całkowitą"/></td>
+                    </tr>
+                    <tr>
+                        <td>Raport wysłany:
+                            <h:inputText value="#{newCallBean.raport_send}"
+                                         required="true"
+                                         requiredMessage="Musisz podać okres oferty"
+                                         converterMessage="Pole musi być liczbą całkowitą"/></td>
+                    </tr>
+                    <tr>
+                        <td>Raport odebrany:
+                            <h:inputText value="#{newCallBean.raport_received}"
+                                         required="true"
+                                         requiredMessage="Musisz podać okres oferty"
+                                         converterMessage="Pole musi być liczbą całkowitą"/></td>
+                    </tr>
+                    <tr>
+                        <td>mail:
+                            <h:inputText value="#{newCallBean.mail}"
+                                         required="true"
+                                         requiredMessage="Musisz podać okres oferty"
+                                         converterMessage="Pole musi być liczbą całkowitą"/></td>
+                    </tr>
+                    <tr>
+                        <td>Password:
+                            <h:inputText value="#{newCallBean.password}"
+                                         required="true"
+                                         requiredMessage="Musisz podać okres oferty"
+                                         converterMessage="Pole musi być liczbą całkowitą"/></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <h:commandButton value="Wyślij"
+                                             action="#{newCallBean.addData}"/></th>
+                    </tr>
+                </table>
+            </h:form>
+
+
+        </fieldset>
+
+        <hr/>
+
+    </div>
+</h:body>
+</html>
