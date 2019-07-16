@@ -20,58 +20,78 @@
                         <td>Callsign:
                             <h:inputText value="#{newCallBean.call_sign}"
                                          required="true"
-                                         requiredMessage="Musisz podać znak"/>
-                                         <!--TODO add regex patter-->
-
+                                         requiredMessage="Musisz podać znak"
+                                         validatorMessage="Podaj poprawny znak">
+                                <f:validateRegex pattern="\d?[a-zA-Z]{1,2}\d{1,4}[a-zA-Z]{1,4}"/>
+                            </h:inputText>
                         </td>
                     </tr>
                     <tr>
                         <td>Operator name:
                             <h:inputText value="#{newCallBean.operator_name}"
                                          required="true"
-                                         requiredMessage="Musisz podać"/></td>
+                                         requiredMessage="Musisz imię"/></td>
                     </tr>
                     <tr>
                         <td>Data łączności:
-                            $<h:inputText value="#{newCallBean.contact_date}"
-                                          required="true"
-                                          requiredMessage="Musisz podać kwotę oferty"
-                                          converterMessage="Pole musi być liczbą"/></td>
+                            <h:inputText value="#{newCallBean.contact_date}"
+                                         required="true"
+                                         requiredMessage="Musisz podać datę w formacie dd/mm/yyyy"
+                                         converterMessage="Pole musi zostać wypełnione"
+                                         validatorMessage="Podaj poprawną datę">
+                                <f:validateRegex pattern="(^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)"/>
+                            </h:inputText>
+                        </td>
                     </tr>
                     <tr>
+
                         <td>Band:
-                            <h:inputText value="#{newCallBean.band}"
-                                         required="true"
-                                         requiredMessage="Musisz podać okres oferty"
-                                         converterMessage="Pole musi być liczbą całkowitą"/></td>
+                            <h:selectOneMenu value="#{newCallBean.band}">
+                                <f:selectItem itemValue="70cm" itemLabel="70cm"/>
+                                <f:selectItem itemValue="2m" itemLabel="2m"/>
+                                <f:selectItem itemValue="20m" itemLabel="20m"/>
+                                <f:selectItem itemValue="20m" itemLabel="30m"/>
+                                <f:selectItem itemValue="40m" itemLabel="40m"/>
+                                <f:selectItem itemValue="80m" itemLabel="80m"/>
+                           </h:selectOneMenu>
+                        </td>
                     </tr>
                     <tr>
                         <td>Raport wysłany:
                             <h:inputText value="#{newCallBean.raport_send}"
                                          required="true"
                                          requiredMessage="Musisz podać okres oferty"
-                                         converterMessage="Pole musi być liczbą całkowitą"/></td>
+                                         validatorMessage="Podaj poprawny raport">
+                            <f:validateRegex pattern="[1-5][1-9]"/>
+                        </h:inputText>
+                        </td>
                     </tr>
                     <tr>
                         <td>Raport odebrany:
                             <h:inputText value="#{newCallBean.raport_received}"
                                          required="true"
                                          requiredMessage="Musisz podać okres oferty"
-                                         converterMessage="Pole musi być liczbą całkowitą"/></td>
+                                         validatorMessage="Podaj poprawny raport">
+                            <f:validateRegex pattern="[1-5][1-9]"/>
+                        </h:inputText>
+                        </td>
                     </tr>
                     <tr>
                         <td>mail:
                             <h:inputText value="#{newCallBean.mail}"
                                          required="true"
-                                         requiredMessage="Musisz podać okres oferty"
-                                         converterMessage="Pole musi być liczbą całkowitą"/></td>
+                                         requiredMessage="Musisz podać mail"
+                                         validatorMessage="ID musi byc poprawnym emailem">
+                            <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.(com|net|org|edu|pl)"/>
+                            </h:inputText>
+                        </td>
                     </tr>
                     <tr>
                         <td>Password:
-                            <h:inputText value="#{newCallBean.password}"
-                                         required="true"
-                                         requiredMessage="Musisz podać okres oferty"
-                                         converterMessage="Pole musi być liczbą całkowitą"/></td>
+                            <h:inputSecret value="#{newCallBean.password}"
+                                         required="false"
+                                         requiredMessage="Musisz podać hasło"
+                            /></td>
                     </tr>
                     <tr>
                         <th>

@@ -19,13 +19,15 @@ public class NewCallBean {
     private String mail;
     private String password;
 
-    public void addData(){
+    //przesyła dane do DAO i otwiera stronę startową
+    public String addData() {
 
         CallSignsDAO add = new CallSignsDAO();
 
-        add.addData2(this.call_sign, this.operator_name, this.contact_date, this.band, this.raport_send,this.raport_received, this.mail, this.password);
-
+        add.addData2(this.call_sign, this.operator_name, this.contact_date, this.band, this.raport_send, this.raport_received, this.mail, this.password);
+        return "default";
     }
+
 
     //Getters and setters
 
