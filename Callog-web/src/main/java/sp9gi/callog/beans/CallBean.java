@@ -36,6 +36,18 @@ public class CallBean implements Serializable{
         return gett.getCallSigns();
     }
 
+    public void updateDAO(){
+        CallSignsDAO upp = new CallSignsDAO();
+        upp.updateDB();
+        logger.info("utworzono obiekt update");
+    }
+
+    public void deleteDAO(){
+        CallSignsDAO upp = new CallSignsDAO();
+        upp.deleteDB();
+        logger.info("utworzono obiekt update");
+    }
+
     public void setNewsList(List<CallSignsDB> newsList) {
         this.newsList = newsList;
     }

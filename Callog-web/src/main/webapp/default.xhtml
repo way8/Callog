@@ -14,8 +14,8 @@
     <h1>JSF 1 dataTable example</h1>
 
     <h:form>
-        <h:commandButton value="Wyslij" action="#{calls.addData}"/>
-
+        <h:commandButton value="update" action="#{calls.updateDAO}"/>
+        <h:commandButton value="delete" action="#{calls.deleteDAO}"/>
         <h:commandButton value="Wyslij logger" action="#{testBean.loggCheck}"/>
 
         <h:inputText value="#{testBean.a}"/>

@@ -14,20 +14,14 @@ import java.util.logging.Logger;
 public class CallSignsDAO {
 
 
+    //TODO zestandaryzować wszystko, by kod się nie powtarzał
+
     private static Logger LOGGER = Logger.getLogger("CallSignsDAO");
     public void addData1() {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
         LOGGER.info("tworzy się nowy obiekt client");
         CallSignsDB ham = new CallSignsDB();
-        ham.setCall_sign("EA2DT");
-        ham.setOperator_name("Manuel");
-        ham.setBand("2m");
-        ham.setRaport_received("59");
-        ham.setRaport_send("59");
-        ham.setContact_date("2019-10-10");
-        ham.setMail("onet@interia.pl");
-        ham.setPassword("none");
 
         LOGGER.info("rozpoczęto transakcję");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -38,8 +32,8 @@ public class CallSignsDAO {
         entityManagerFactory.close();
     }
 
+    //dodaje wpis do bazy
     public void addData2(String call_sign, String operator_name, String contact_date, String band, String raport_send, String raport_received, String mail, String password) {
-
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
         LOGGER.info("tworzy się nowy obiekt client");
         CallSignsDB ham2 = new CallSignsDB(call_sign, operator_name, contact_date, band, raport_send, raport_received, mail, password);
@@ -53,7 +47,7 @@ public class CallSignsDAO {
     }
 
 
-    // @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    //pobiera listę łączności
     public List<CallSignsDB> getCallSigns() {
         LOGGER.info("rozpoczęto transakcję");
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
@@ -62,5 +56,30 @@ public class CallSignsDAO {
         List<CallSignsDB> callSignsList = query.getResultList();
         return callSignsList;
     }
+
+    public void updateDB() {
+        LOGGER.info("rozpoczęto transakcję update");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        Query query = entityManager.createQuery("UPDATE CallSignsDB  c SET c.band='18m' WHERE c.id=2");
+        entityManager.getTransaction().begin();
+        query.executeUpdate ();
+        entityManager.getTransaction().commit();
+
+        entityManagerFactory.close();
+    }
+
+    public void deleteDB() {
+        LOGGER.info("rozpoczęto transakcję update");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        Query query = entityManager.createQuery("DELETE FROM CallSignsDB  c WHERE c.id=2");
+        entityManager.getTransaction().begin();
+        query.executeUpdate ();
+        entityManager.getTransaction().commit();
+
+        entityManagerFactory.close();
+    }
+
 
 }
