@@ -3,7 +3,7 @@ package sp9gi.callog.jpa;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+
 
 //id; callsign; op. name; data; band; mode; rap send; rap rcv, mail, password
 @Entity

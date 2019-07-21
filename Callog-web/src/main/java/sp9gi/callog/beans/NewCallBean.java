@@ -2,6 +2,7 @@ package sp9gi.callog.beans;
 
 
 import sp9gi.callog.ejb.CallSignsDAO;
+import sp9gi.callog.jpa.CallSignsDB;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -10,6 +11,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class NewCallBean {
 
+    private int id;
     private String call_sign;
     private String operator_name;
     private String contact_date;
@@ -18,6 +20,9 @@ public class NewCallBean {
     private String raport_received;
     private String mail;
     private String password;
+
+
+
 
     //przesyła dane do DAO i otwiera stronę startową
     public String addData() {
@@ -28,11 +33,34 @@ public class NewCallBean {
         return "default";
     }
 
+    //method to fill in the from in updateCall.xhtml
+    public void updateCall(){
+        CallSignsDAO update = new CallSignsDAO();
+
+        //we get only one position form DB, so we always want to get index 0 from the list
+        call_sign = update.getSingleCallSign(id).get(0).getCall_sign();
+        operator_name = update.getSingleCallSign(id).get(0).getOperator_name();
+        contact_date = update.getSingleCallSign(id).get(0).getContact_date();
+        band = update.getSingleCallSign(id).get(0).getBand();
+        raport_send = update.getSingleCallSign(id).get(0).getRaport_send();
+        raport_received = update.getSingleCallSign(id).get(0).getRaport_received();
+        mail = update.getSingleCallSign(id).get(0).getMail();
+
+    }
+
 
     //Getters and setters
 
     public String getCall_sign() {
         return call_sign;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setCall_sign(String call_sign) {
