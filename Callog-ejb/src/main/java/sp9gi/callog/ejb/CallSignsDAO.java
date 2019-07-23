@@ -62,21 +62,20 @@ public class CallSignsDAO {
         LOGGER.info("rozpoczęto transakcję");
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Query query = entityManager.createQuery("SELECT c FROM CallSignsDB c WHERE c.id LIKE :custId");
-        query.setParameter("custId", id);
+        Query query = entityManager.createQuery("SELECT c FROM CallSignsDB c WHERE c.id = :Id");
+        query.setParameter("Id", id);
         List<CallSignsDB> callSignsList = query.getResultList();
         return callSignsList;
     }
 
-
-
-    public void updateDB() {
+    public void updateDB(int id, String call_sign, String operator_name, String contact_date, String band, String raport_send, String raport_received, String mail) {
         LOGGER.info("rozpoczęto transakcję update");
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Query query = entityManager.createQuery("UPDATE CallSignsDB  c SET c.band='18m' WHERE c.id=2");
+        Query query = entityManager.createQuery("UPDATE CallSignsDB  c SET c.call_sign = ?2, c.operator_name = ?3, c.contact_date = ?4, c.band = ?5, c.raport_send = ?6, c.raport_received = ?7, c.mail = ?8 WHERE c.id = ?1");
         entityManager.getTransaction().begin();
-        query.executeUpdate ();
+        query.setParameter(1, id).setParameter(2, call_sign).setParameter(3, operator_name).setParameter(4, contact_date).setParameter(5, band).setParameter(6, raport_send).setParameter(7, raport_received).setParameter(8, mail);
+        query.executeUpdate();
         entityManager.getTransaction().commit();
 
         entityManagerFactory.close();

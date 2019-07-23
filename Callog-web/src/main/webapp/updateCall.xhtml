@@ -7,7 +7,7 @@
 
 <f:metadata>
     <f:viewParam name="id" value="#{newCallBean.id}" />
-    <f:event type="preRenderView" listener="#{newCallBean.updateCall}"/>
+    <f:event type="preRenderView" listener="#{newCallBean.showCall}"/>
 </f:metadata>
 
 <h:head><title>test</title>
@@ -89,17 +89,20 @@
                                 </h:inputText>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Password:
-                                <h:inputSecret value="#{newCallBean.password}"
-                                               required="false"
-                                               requiredMessage="Musisz podać hasło"
-                                /></td>
-                        </tr>
+<!--                        <tr>-->
+<!--                            <td>Password:-->
+<!--                                <h:inputSecret value="#{newCallBean.password}"-->
+<!--                                               required="false"-->
+<!--                                               requiredMessage="Musisz podać hasło"-->
+<!--                                /></td>-->
+<!--                        </tr>-->
                         <tr>
                             <th>
-                                <h:commandButton value="Wyślij"
-                                                 action="#{newCallBean.addData}"/></th>
+                                <h:commandButton value="Update"
+                                                 action="#{newCallBean.updateCall}"/></th>
+                            <th>
+                                <h:commandButton value="Cancel"
+                                                 action="default"/></th>
                         </tr>
                     </table>
                 </h:form>

@@ -1,6 +1,7 @@
 package sp9gi.callog.beans;
 
 
+import com.sun.javafx.binding.StringFormatter;
 import sp9gi.callog.ejb.CallSignsDAO;
 import sp9gi.callog.jpa.CallSignsDB;
 
@@ -33,21 +34,27 @@ public class NewCallBean {
         return "default";
     }
 
-    //method to fill in the from in updateCall.xhtml
-    public void updateCall(){
-        CallSignsDAO update = new CallSignsDAO();
+    //method to fill in the from in showCall.xhtml
+    public void showCall(){
+        CallSignsDAO show = new CallSignsDAO();
 
         //we get only one position form DB, so we always want to get index 0 from the list
-        call_sign = update.getSingleCallSign(id).get(0).getCall_sign();
-        operator_name = update.getSingleCallSign(id).get(0).getOperator_name();
-        contact_date = update.getSingleCallSign(id).get(0).getContact_date();
-        band = update.getSingleCallSign(id).get(0).getBand();
-        raport_send = update.getSingleCallSign(id).get(0).getRaport_send();
-        raport_received = update.getSingleCallSign(id).get(0).getRaport_received();
-        mail = update.getSingleCallSign(id).get(0).getMail();
+        call_sign = show.getSingleCallSign(id).get(0).getCall_sign();
+        operator_name = show.getSingleCallSign(id).get(0).getOperator_name();
+        contact_date = show.getSingleCallSign(id).get(0).getContact_date();
+        band = show.getSingleCallSign(id).get(0).getBand();
+        raport_send = show.getSingleCallSign(id).get(0).getRaport_send();
+        raport_received = show.getSingleCallSign(id).get(0).getRaport_received();
+        mail = show.getSingleCallSign(id).get(0).getMail();
 
     }
 
+    public String updateCall() {
+        CallSignsDAO update = new CallSignsDAO();
+        update.updateDB(this.id, this.call_sign, this.operator_name, this.contact_date, this.band, this.raport_send, this.raport_received, this.mail);
+
+        return "default";
+    }
 
     //Getters and setters
 
