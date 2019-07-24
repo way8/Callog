@@ -6,6 +6,11 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
 >
+
+<f:metadata>
+    <f:viewParam name="removeId" value="#{newCallBean.removeId}"/>
+</f:metadata>
+
 <h:head>
     <h:outputStylesheet library="css" name="table-style.css"/>
 </h:head>
@@ -65,9 +70,10 @@
             #{c.raport_send}
         </h:column>
         <h:column>
-        <f:facet name="header">Edycja</f:facet>
-        <h:link value="link" outcome="updateCall.xhtml?id=#{c.id}">
-            </h:link>
+            <f:facet name="header">Edycja</f:facet>
+            <h:link value="Edit " outcome="updateCall.xhtml?id=#{c.id}"/>
+            <h:link outcome="default.xhtml?removeId=#{c.id}" value="Del" />
+
         </h:column>
     </h:dataTable>
 

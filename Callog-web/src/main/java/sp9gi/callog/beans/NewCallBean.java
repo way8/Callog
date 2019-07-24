@@ -22,6 +22,7 @@ public class NewCallBean {
     private String mail;
     private String password;
 
+    private int removeId;
 
 
 
@@ -56,7 +57,23 @@ public class NewCallBean {
         return "default";
     }
 
+    public void deleteCall() {
+        CallSignsDAO delete = new CallSignsDAO();
+        delete.deleteCall(this.id);
+    }
+
     //Getters and setters
+
+
+    public int getRemoveId() {
+        return removeId;
+    }
+
+    public void setRemoveId(int removeId) {
+        this.removeId = removeId;
+        CallSignsDAO delete = new CallSignsDAO();
+        delete.deleteCall(removeId);
+    }
 
     public String getCall_sign() {
         return call_sign;

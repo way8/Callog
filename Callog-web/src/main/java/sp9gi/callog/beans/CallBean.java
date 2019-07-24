@@ -4,7 +4,6 @@ import sp9gi.callog.ejb.CallSignsDAO;
 import sp9gi.callog.jpa.CallSignsDB;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -36,17 +35,7 @@ public class CallBean implements Serializable{
         return gett.getCallSigns();
     }
 
-//    public void updateDAO(){
-//        CallSignsDAO upp = new CallSignsDAO();
-//        upp.updateDB();
-//        logger.info("utworzono obiekt update");
-//    }
 
-    public void deleteDAO(){
-        CallSignsDAO upp = new CallSignsDAO();
-        upp.deleteDB();
-        logger.info("utworzono obiekt update");
-    }
 
     public void setNewsList(List<CallSignsDB> newsList) {
         this.newsList = newsList;

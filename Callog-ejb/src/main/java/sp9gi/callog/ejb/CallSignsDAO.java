@@ -81,13 +81,13 @@ public class CallSignsDAO {
         entityManagerFactory.close();
     }
 
-    public void deleteDB() {
-        LOGGER.info("rozpoczęto transakcję update");
+    public void deleteCall(int id) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Query query = entityManager.createQuery("DELETE FROM CallSignsDB  c WHERE c.id=2");
+        Query query = entityManager.createQuery("DELETE FROM CallSignsDB  c WHERE c.id = ?1");
         entityManager.getTransaction().begin();
-        query.executeUpdate ();
+        query.setParameter(1, id);
+        query.executeUpdate();
         entityManager.getTransaction().commit();
 
         entityManagerFactory.close();
