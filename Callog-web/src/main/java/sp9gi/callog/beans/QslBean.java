@@ -1,5 +1,10 @@
 package sp9gi.callog.beans;
 
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.Email;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -95,6 +100,24 @@ public class QslBean implements Serializable {
         byte[] imageToPassAsValueAttr = baos.toByteArray();
 
         return imageToPassAsValueAttr;
+    }
+
+    public void sendMail() {
+        LOGGER.info("odpalono metodę sendMail");
+        Email email = new SimpleEmail();
+        email.setHostName("smtp.gmail.com");
+        email.setSmtpPort(465);
+        email.setAuthenticator(new DefaultAuthenticator("sp9gi.qsl@gmail.com", "adminsp9gi"));
+        email.setSSLOnConnect(true);
+        try {
+            email.setFrom("sp9gi.qsl@gmail.com");
+            email.setSubject("TestMail");
+            email.setMsg("This is a test mail ... :-)");
+            email.addTo("sylwester.sp9gi@gmail.com");
+            email.send();
+        } catch (EmailException e) {
+            e.printStackTrace();
+        }
     }
 
 }

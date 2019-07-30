@@ -82,7 +82,20 @@
          <artifactId>omnifaces</artifactId>
          <version>3.3</version>
       </dependency>
-       <!-- JSR-303 (Bean Validation) Implementation -->
+
+      <dependency>
+         <groupId>org.apache.commons</groupId>
+         <artifactId>commons-email</artifactId>
+         <version>1.5</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+      <dependency>
+         <groupId>javax.mail</groupId>
+         <artifactId>javax.mail-api</artifactId>
+         <version>1.6.2</version>
+      </dependency>
+
+      <!-- JSR-303 (Bean Validation) Implementation -->
        <!-- Provides portable constraints such as @Email -->
        <!-- Hibernate Validator is shipped in JBoss WildFly -->
        <dependency>
