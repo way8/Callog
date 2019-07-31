@@ -1,9 +1,6 @@
 package sp9gi.callog.beans;
 
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.Email;
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.SimpleEmail;
+import org.apache.commons.mail.*;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -23,35 +20,28 @@ public class QslBean implements Serializable {
 
     private static Logger LOGGER = Logger.getLogger("QslBean");
     private static final long serialVersionUID = 1254145489;
-    private BufferedImage image;
+    ByteArrayOutputStream baos;
 
-    public BufferedImage getTempImage() {
-        return tempImage;
-    }
-
-    public void setTempImage(BufferedImage tempImage) {
-        this.tempImage = tempImage;
-    }
-
-    public BufferedImage tempImage;
+    public BufferedImage image;
 
 
-    public void createQsl() {
-        LOGGER.info("odpalono metodę create qsl");
-                try {
-                    InputStream eqsl = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("resources/qsl/sp9gi_eqsl.png");
-       //     String path = externalContext.getRealPath()("resources/qsl/sp9gi_eqsl.png");
-                    LOGGER.info("input stream");
-//            image = ImageIO.read(new File(path));
-                    image = ImageIO.read(eqsl);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-      //  process(image);
-    }
+//    public void createQsl() {
+//        LOGGER.info("odpalono metodę create qsl");
+//                try {
+//                    InputStream eqsl = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("resources/qsl/sp9gi_eqsl.png");
+//       //     String path = externalContext.getRealPath()("resources/qsl/sp9gi_eqsl.png");
+//                    LOGGER.info("input stream");
+////            image = ImageIO.read(new File(path));
+//                    image = ImageIO.read(eqsl);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//      //  process(image);
+//    }
 
     public byte[] process() {
 
+        //image to InputStream
         InputStream eqsl = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("resources/qsl/sp9gi_eqsl.png");
 
         LOGGER.info("input stream");
@@ -63,7 +53,8 @@ public class QslBean implements Serializable {
             e.printStackTrace();
         }
 
-        LOGGER.info("odpalono metodę buffered image");
+        //drawing on the image
+        LOGGER.info("odpalono  buffered image");
         int w = old.getWidth();
         int h = old.getHeight();
         BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
@@ -84,14 +75,17 @@ public class QslBean implements Serializable {
         g2d.drawString(mo, 1270, 1000);
         g2d.dispose();
 
-//        File outputfile = new File("resources/qsl/sp9gi_eqsl1.png");
-//        try {
-//            ImageIO.write(img, "png", outputfile);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        //saving image on the server in standalone/data
+        File dataDir = new File(System.getProperty("jboss.server.data.dir"));
+        File outputfile = new File(dataDir, "sp9gi_eqsl1.png");
+        try {
+            ImageIO.write(img, "png", outputfile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        //generating ByteArrayOutputStream in which will by save image
+        baos = new ByteArrayOutputStream();
         try {
             ImageIO.write(img, "png", baos);
         } catch (IOException e) {
@@ -104,7 +98,15 @@ public class QslBean implements Serializable {
 
     public void sendMail() {
         LOGGER.info("odpalono metodę sendMail");
-        Email email = new SimpleEmail();
+
+        // Create the attachment
+        EmailAttachment attachment = new EmailAttachment();
+        attachment.setPath(System.getProperty("jboss.server.data.dir") + "/sp9gi_eqsl1.png");
+        attachment.setDisposition(EmailAttachment.ATTACHMENT);
+        attachment.setDescription("Picture of John");
+        attachment.setName("John");
+
+        MultiPartEmail email = new MultiPartEmail();
         email.setHostName("smtp.gmail.com");
         email.setSmtpPort(465);
         email.setAuthenticator(new DefaultAuthenticator("sp9gi.qsl@gmail.com", "adminsp9gi"));
@@ -114,10 +116,14 @@ public class QslBean implements Serializable {
             email.setSubject("TestMail");
             email.setMsg("This is a test mail ... :-)");
             email.addTo("sylwester.sp9gi@gmail.com");
+            // add the attachment
+            email.attach(attachment);
+            // send the email
             email.send();
         } catch (EmailException e) {
             e.printStackTrace();
         }
+
     }
 
 }
