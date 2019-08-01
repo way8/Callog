@@ -7,21 +7,28 @@
 
 
 <f:metadata>
-
+    <f:viewParam name="id" value="#{newCallBean.id}" />
+    <f:event type="preRenderView" listener="#{newCallBean.showCall}"/>
 </f:metadata>
 
 <h:head><title>test</title>
 </h:head>
 <h:body>
     <div align="center">
-        <h1>Zdjęcie czy niee </h1>
+        <h1>Edytowane ID to #{newCallBean.id} </h1>
 
         <fieldset>
-                <legend>QSL</legend>
+            <legend>QSL</legend>
 
 
-            <o:graphicImage value="#{qslBean.process()}" dataURI="true" />
+            <o:graphicImage value="#{qslBean.process()}" dataURI="true"/>
             <h:form>
+                <td>Callsign:
+                    <h:inputText value="#{newCallBean.call_sign}"
+                                 required="true">
+                    </h:inputText>
+                </td>
+
                 <h:commandButton value="send mail" action="#{qslBean.sendMail}"/>
 
             </h:form>

@@ -21,7 +21,6 @@
     <h:form>
         <h:commandButton value="Create QSL" action="#{qslBean.createQsl}"/>
         <h:commandButton value="delete" action="#{calls.deleteDAO}"/>
-        <h:commandButton value="Otwórz zdjęcie" action="test"/>
 
         <h:inputText value="#{testBean.a}"/>
         <h:commandButton value="Wyslij" action="#{testBean.number}"/>
@@ -73,6 +72,7 @@
             <f:facet name="header">Edycja</f:facet>
             <h:link value="Edit " outcome="updateCall.xhtml?id=#{c.id}"/>
             <h:link outcome="default.xhtml?removeId=#{c.id}" value="Del" />
+            <h:link value=" QSL " outcome="eqsl.xhtml?id=#{c.id}"/>
 
         </h:column>
     </h:dataTable>

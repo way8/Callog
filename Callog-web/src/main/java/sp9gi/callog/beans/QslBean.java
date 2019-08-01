@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
@@ -18,29 +19,22 @@ import javax.imageio.ImageIO;
 @SessionScoped
 public class QslBean implements Serializable {
 
+    @ManagedProperty(value = "#{newCallBean}")
+    private NewCallBean newCallBean;
+
     private static Logger LOGGER = Logger.getLogger("QslBean");
     private static final long serialVersionUID = 1254145489;
     ByteArrayOutputStream baos;
 
-    public BufferedImage image;
+    public NewCallBean getNewCallBean() {
+        return newCallBean;
+    }
 
-
-//    public void createQsl() {
-//        LOGGER.info("odpalono metodę create qsl");
-//                try {
-//                    InputStream eqsl = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("resources/qsl/sp9gi_eqsl.png");
-//       //     String path = externalContext.getRealPath()("resources/qsl/sp9gi_eqsl.png");
-//                    LOGGER.info("input stream");
-////            image = ImageIO.read(new File(path));
-//                    image = ImageIO.read(eqsl);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//      //  process(image);
-//    }
+    public void setNewCallBean(NewCallBean newCallBean) {
+        this.newCallBean = newCallBean;
+    }
 
     public byte[] process() {
-
         //image to InputStream
         InputStream eqsl = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("resources/qsl/sp9gi_eqsl.png");
 
@@ -62,10 +56,11 @@ public class QslBean implements Serializable {
         g2d.drawImage(old, 0, 0, w, h, null);
         g2d.setPaint(Color.BLACK);
         g2d.setFont(new Font("Arial", Font.BOLD, 70));
-        String cs = "SP9GI/p";
-        String da = "12/12/2019";
-        String ba = "20m";
-        String re = "59";
+        String cs = newCallBean.getCall_sign();
+        String da = newCallBean.getContact_date();
+        String ba = newCallBean.getBand();
+        String re = newCallBean.getRaport_received();
+        //todo wprowadzić do bazy danych pozycję mode
         String mo = "SSB";
 
         g2d.drawString(cs, 120, 1000);
@@ -103,8 +98,8 @@ public class QslBean implements Serializable {
         EmailAttachment attachment = new EmailAttachment();
         attachment.setPath(System.getProperty("jboss.server.data.dir") + "/sp9gi_eqsl1.png");
         attachment.setDisposition(EmailAttachment.ATTACHMENT);
-        attachment.setDescription("Picture of John");
-        attachment.setName("John");
+        attachment.setDescription("eQSL");
+        attachment.setName("SP9GI");
 
         MultiPartEmail email = new MultiPartEmail();
         email.setHostName("smtp.gmail.com");
