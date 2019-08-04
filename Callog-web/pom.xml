@@ -95,6 +95,12 @@
          <version>1.6.2</version>
       </dependency>
 
+      <dependency>
+         <groupId>org.primefaces</groupId>
+         <artifactId>primefaces</artifactId>
+         <version>7.0</version>
+      </dependency>
+
       <!-- JSR-303 (Bean Validation) Implementation -->
        <!-- Provides portable constraints such as @Email -->
        <!-- Hibernate Validator is shipped in JBoss WildFly -->

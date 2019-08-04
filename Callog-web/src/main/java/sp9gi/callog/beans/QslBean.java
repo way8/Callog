@@ -55,7 +55,7 @@ public class QslBean implements Serializable {
         Graphics2D g2d = img.createGraphics();
         g2d.drawImage(old, 0, 0, w, h, null);
         g2d.setPaint(Color.BLACK);
-        g2d.setFont(new Font("Arial", Font.BOLD, 70));
+        g2d.setFont(new Font("Rockness", Font.BOLD, 70));
         String cs = newCallBean.getCall_sign();
         String da = newCallBean.getContact_date();
         String ba = newCallBean.getBand();
