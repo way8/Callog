@@ -2,16 +2,43 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head><title>JSF 2.0: Strona startowa</title>
+
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>primestrap</title>
+    </f:facet>
+
+    <f:facet name="middle">
+        <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+        <h:outputStylesheet name="css/dashboard.css" />
+        <h:outputStylesheet library="css" name="table-style.css"/>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+
+        <h:outputScript name="bootstrap/js/bootstrap.js" />
+    </f:facet>
+
+    <f:facet name="last">
+
+    </f:facet>
+
 </h:head>
 <h:body>
+
+    <ui:include src="navigation.xhtml"/>
+
     <div align="center">
-        <h1>Wprowadź sowje dane </h1>
+        <h3>Enter data </h3>
 
         <fieldset>
-            <legend>Oferty pozycjonowania</legend>
+<!--            <legend>Oferty pozycjonowania</legend>-->
 
             <h:form>
                 <h:messages styleClass="error"/>
@@ -60,7 +87,7 @@
                         <td>Raport wysłany:
                             <h:inputText value="#{newCallBean.raport_send}"
                                          required="true"
-                                         requiredMessage="Musisz podać okres oferty"
+                                         requiredMessage="Musisz podać raport"
                                          validatorMessage="Podaj poprawny raport">
                             <f:validateRegex pattern="[1-5][1-9]"/>
                         </h:inputText>
@@ -70,7 +97,7 @@
                         <td>Raport odebrany:
                             <h:inputText value="#{newCallBean.raport_received}"
                                          required="true"
-                                         requiredMessage="Musisz podać okres oferty"
+                                         requiredMessage="Musisz podać raport"
                                          validatorMessage="Podaj poprawny raport">
                             <f:validateRegex pattern="[1-5][1-9]"/>
                         </h:inputText>
@@ -94,9 +121,12 @@
                             /></td>
                     </tr>
                     <tr>
+                        //method addData add call to DB and open logbook page
                         <th>
-                            <h:commandButton value="Wyślij"
-                                             action="#{newCallBean.addData}"/></th>
+                            <h:commandButton value="Add log"
+                                             action="#{newCallBean.addData()}">
+                            </h:commandButton>
+                        </th>
                     </tr>
                 </table>
             </h:form>

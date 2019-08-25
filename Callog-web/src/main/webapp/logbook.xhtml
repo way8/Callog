@@ -12,22 +12,35 @@
 </f:metadata>
 
 <h:head>
-    <h:outputStylesheet library="css" name="table-style.css"/>
+
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>primestrap</title>
+    </f:facet>
+
+    <f:facet name="middle">
+        <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+        <h:outputStylesheet name="css/dashboard.css" />
+        <h:outputStylesheet library="css" name="table-style.css"/>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+
+        <h:outputScript name="bootstrap/js/bootstrap.js" />
+    </f:facet>
+
+    <f:facet name="last">
+
+    </f:facet>
 </h:head>
 <h:body>
 
-    <h1>JSF 1 dataTable example</h1>
-
-    <h:form>
-        <h:commandButton value="Create QSL" action="#{qslBean.createQsl}"/>
-        <h:commandButton value="delete" action="#{calls.deleteDAO}"/>
-
-        <h:inputText value="#{testBean.a}"/>
-        <h:commandButton value="Wyslij" action="#{testBean.number}"/>
-        Wynik:#{testBean.a}
-    </h:form>
+    <ui:include src="navigation.xhtml"/>
 
 
+    <div class="container" align="center">
     <h:dataTable value="#{calls.callList}" var="c"
                  styleClass="order-table"
                  headerClass="order-table-header"
@@ -71,12 +84,12 @@
         <h:column>
             <f:facet name="header">Edycja</f:facet>
             <h:link value="Edit " outcome="updateCall.xhtml?id=#{c.id}"/>
-            <h:link outcome="default.xhtml?removeId=#{c.id}" value="Del" />
+            <h:link value="Del" outcome="logbook.xhtml?removeId=#{c.id}"/>
             <h:link value=" QSL " outcome="eqsl.xhtml?id=#{c.id}"/>
 
         </h:column>
     </h:dataTable>
 
-
+    </div>
 </h:body>
 </html>

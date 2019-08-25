@@ -70,7 +70,7 @@ public class QslBean implements Serializable {
         g2d.drawString(mo, 1270, 1000);
         g2d.dispose();
 
-        //saving image on the server in standalone/data
+        //saving image on the server in standalone/data folder
         File dataDir = new File(System.getProperty("jboss.server.data.dir"));
         File outputfile = new File(dataDir, "sp9gi_eqsl1.png");
         try {

@@ -25,14 +25,13 @@ public class NewCallBean {
     private int removeId;
 
 
-
     //przesyła dane do DAO i otwiera stronę startową
     public String addData() {
 
         CallSignsDAO add = new CallSignsDAO();
 
         add.addData2(this.call_sign, this.operator_name, this.contact_date, this.band, this.raport_send, this.raport_received, this.mail, this.password);
-        return "default";
+        return "logbook";
     }
 
     //method to fill in the from in showCall.xhtml
@@ -54,7 +53,7 @@ public class NewCallBean {
         CallSignsDAO update = new CallSignsDAO();
         update.updateDB(this.id, this.call_sign, this.operator_name, this.contact_date, this.band, this.raport_send, this.raport_received, this.mail);
 
-        return "default";
+        return "logbook";
     }
 
     public void deleteCall() {
