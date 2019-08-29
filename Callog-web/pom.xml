@@ -102,6 +102,17 @@
          <version>7.0</version>
       </dependency>
 
+<!--      import API for login purposes-->
+      <dependency>
+         <groupId>javax</groupId>
+         <artifactId>javaee-api</artifactId>
+         <version>8.0</version>
+      </dependency>
+      <dependency>
+         <groupId>org.primefaces.themes</groupId>
+         <artifactId>all-themes</artifactId>
+         <version>1.0.10</version>
+      </dependency>
 
       <!-- JSR-303 (Bean Validation) Implementation -->
        <!-- Provides portable constraints such as @Email -->
