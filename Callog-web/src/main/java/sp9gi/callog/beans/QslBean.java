@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 @SessionScoped
 public class QslBean implements Serializable {
 
+    //dependency injection
     @ManagedProperty(value = "#{newCallBean}")
     private NewCallBean newCallBean;
 

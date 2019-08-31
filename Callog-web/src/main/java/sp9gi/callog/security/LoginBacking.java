@@ -26,8 +26,7 @@ public class LoginBacking {
     private String password;
 
     @NotEmpty
-    @Email(message = "Please provide a valid e-mail")
-    private String email;
+    private String callsign;
 
     @Inject
     private SecurityContext securityContext;
@@ -49,9 +48,16 @@ public class LoginBacking {
                         new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed", null));
                 break;
             case SUCCESS:
-                facesContext.addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Login succeed", null));
-                externalContext.redirect(externalContext.getRequestContextPath() + "/app/index.xhtml");
+                if (securityContext.isCallerInRole("ADMIN")) {
+                    facesContext.addMessage(null,
+                            new FacesMessage(FacesMessage.SEVERITY_INFO, "Login succeed", null));
+                    externalContext.redirect(externalContext.getRequestContextPath() + "/adm/logbook.xhtml");
+                }
+                else {
+                    facesContext.addMessage(null,
+                            new FacesMessage(FacesMessage.SEVERITY_INFO, "Login succeed", null));
+                    externalContext.redirect(externalContext.getRequestContextPath() + "/app/index.xhtml");
+                }
                 break;
             case NOT_DONE:
         }
@@ -61,7 +67,7 @@ public class LoginBacking {
         return securityContext.authenticate(
                 (HttpServletRequest) externalContext.getRequest(),
                 (HttpServletResponse) externalContext.getResponse(),
-                AuthenticationParameters.withParams().credential(new UsernamePasswordCredential(email, password))
+                AuthenticationParameters.withParams().credential(new UsernamePasswordCredential(callsign, password))
         );
     }
 
@@ -73,11 +79,11 @@ public class LoginBacking {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCallsign() {
+        return callsign;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCallsign(String callsign) {
+        this.callsign = callsign;
     }
 }

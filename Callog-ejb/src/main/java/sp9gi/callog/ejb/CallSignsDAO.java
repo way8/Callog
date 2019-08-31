@@ -68,6 +68,17 @@ public class CallSignsDAO {
         return callSignsList;
     }
 
+    public List<CallSignsDB> getUserCallSigns(String callSign) {
+        LOGGER.info("rozpoczęto transakcję");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        Query query = entityManager.createQuery("SELECT c FROM CallSignsDB c WHERE c.call_sign = :CS");
+        query.setParameter("SC", callSign);
+        List<CallSignsDB> callSignsList = query.getResultList();
+        return callSignsList;
+    }
+
+
     public void updateDB(int id, String call_sign, String operator_name, String contact_date, String band, String raport_send, String raport_received, String mail) {
         LOGGER.info("rozpoczęto transakcję update");
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");

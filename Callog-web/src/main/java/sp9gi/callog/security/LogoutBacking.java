@@ -10,6 +10,6 @@ public class LogoutBacking {
 
     public String submit() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/login.xhtml?faces-redirect=true";
+        return "home.xhtml?faces-redirect=true";
     }
 }

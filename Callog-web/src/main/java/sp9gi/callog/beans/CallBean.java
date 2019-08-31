@@ -2,16 +2,23 @@ package sp9gi.callog.beans;
 
 import sp9gi.callog.ejb.CallSignsDAO;
 import sp9gi.callog.jpa.CallSignsDB;
+import sp9gi.callog.security.LoginBacking;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name= "calls")
 @SessionScoped
 public class CallBean implements Serializable{
+
+//    //dependency injection
+//    @ManagedProperty(value = "#{loginBacking}")
+//    private LoginBacking loginBacking;
+
 
     private static final long serialVersionUID = 1L;
     private Logger logger = Logger.getLogger("calls");
@@ -33,6 +40,13 @@ public class CallBean implements Serializable{
         CallSignsDAO gett = new CallSignsDAO();
         logger.info("utworzono obiekt");
         return gett.getCallSigns();
+    }
+
+    public List<CallSignsDB> getUserCallList() {
+        logger.warning("rozpoczęto dodawanie obiektu");
+        CallSignsDAO gett = new CallSignsDAO();
+        logger.info("utworzono obiekt");
+        return gett.getUserCallSigns("SP9OZI");
     }
 
 

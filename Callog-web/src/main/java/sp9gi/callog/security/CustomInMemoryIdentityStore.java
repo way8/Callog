@@ -16,10 +16,10 @@ public class CustomInMemoryIdentityStore implements IdentityStore {
 
         UsernamePasswordCredential login = (UsernamePasswordCredential) credential;
 
-        if (login.getCaller().equals("admin@mail.com") && login.getPasswordAsString().equals("ADMIN1234")) {
+        if (login.getCaller().equals("admin") && login.getPasswordAsString().equals("ADMIN1234")) {
             return new CredentialValidationResult("admin", new HashSet<>(Arrays.asList("ADMIN")));
-        } else if (login.getCaller().equals("user@mail.com") && login.getPasswordAsString().equals("USER1234")) {
-            return new CredentialValidationResult("user", new HashSet<>(Arrays.asList("USER")));
+        } else if (login.getCaller().equals("SP9OZI") && login.getPasswordAsString().equals("USER1234")) {
+            return new CredentialValidationResult("SP9OZI", new HashSet<>(Arrays.asList("USER")));
         } else {
             return CredentialValidationResult.NOT_VALIDATED_RESULT;
         }

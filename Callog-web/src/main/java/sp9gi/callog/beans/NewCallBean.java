@@ -25,7 +25,7 @@ public class NewCallBean {
     private int removeId;
 
 
-    //przesyła dane do DAO i otwiera stronę startową
+    //przesyła dane do DAO i otwiera stronę z listą
     public String addData() {
 
         CallSignsDAO add = new CallSignsDAO();
@@ -62,7 +62,6 @@ public class NewCallBean {
     }
 
     //Getters and setters
-
 
     public int getRemoveId() {
         return removeId;
