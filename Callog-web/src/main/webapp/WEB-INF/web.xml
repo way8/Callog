@@ -5,7 +5,7 @@
 
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Application pages</web-resource-name>
+            <web-resource-name>Admin pages</web-resource-name>
             <url-pattern>/adm/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>

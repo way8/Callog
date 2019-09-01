@@ -32,14 +32,17 @@
     </h:head>
     <h:body>
 
-        <ui:include src="navigation.xhtml" />
-        <p:outputLabel>Welcome to the application!</p:outputLabel>
+<!--        <ui:include src="navigation.xhtml" />-->
+        <div align="center">
+            <p:outputLabel>Welcome to the application!</p:outputLabel>
 
-        <p>Logged-in as #{request.userPrincipal.name}</p>
+            <p>Logged-in as #{request.userPrincipal.name}</p>
 
-        <h:form>
-            <p:commandButton value="Logout" action="#{logoutBacking.submit}"/>
-        </h:form>
+            <h:form>
+                <p:commandButton value="Logout" action="#{logoutBacking.submit}"/>
+            </h:form>
+            <a href="pageb.xhtml">PageB</a>
+        </div>
     </h:body>
 </f:view>
 </html>

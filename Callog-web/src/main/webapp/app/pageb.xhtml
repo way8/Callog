@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head><title>JSF 2.0: Strona startowa</title>
+</h:head>
+<h:body>
+<div align="center">
+<h1>Strona startowa B</h1>
+<p>
+<b>To jest strona A.</b> Odwoluj sie poprzez "page-a.jsf",
+nie "page-a.xhtml".
+</p>
+<fieldset>
+<legend>STRONA B</legend>
+<h:form>
+STROBA B<h:inputText/><br/>
+
+  <h:commandButton value="Idz do strony B" 
+                   action="pageb"/>     <!-- Navigacja do page-b.jsf -->
+</h:form>
+
+  <a href="pageb.xhtml">PageB</a>
+</fieldset>
+
+<hr/>
+
+</div>
+</h:body>
+</html>

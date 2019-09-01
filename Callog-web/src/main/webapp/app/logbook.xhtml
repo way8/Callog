@@ -4,8 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
->
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <f:metadata>
     <f:viewParam name="removeId" value="#{newCallBean.removeId}"/>
@@ -37,7 +36,7 @@
 </h:head>
 <h:body>
 
-
+    <ui:include src="navigation.xhtml"/>
 
 
     <div class="container" align="center">
@@ -81,17 +80,15 @@
             <f:facet name="header">Raport_send</f:facet>
             #{c.raport_send}
         </h:column>
-        <h:column>
-            <f:facet name="header">Edycja</f:facet>
-            <h:link value="Edit " outcome="updateCall.xhtml?id=#{c.id}"/>
-            <h:link value="Del" outcome="logbook.xhtml?removeId=#{c.id}"/>
-            <h:link value=" QSL " outcome="eqsl.xhtml?id=#{c.id}"/>
+<!--        <h:column>-->
+<!--            <f:facet name="header">Edycja</f:facet>-->
+<!--            <h:link value="Edit " outcome="updateCall.xhtml?id=#{c.id}"/>-->
+<!--            <h:link value="Del" outcome="logbook.xhtml?removeId=#{c.id}"/>-->
+<!--            <h:link value=" QSL " outcome="eqsl.xhtml?id=#{c.id}"/>-->
 
-        </h:column>
+<!--        </h:column>-->
     </h:dataTable>
 
     </div>
-
-    <ui:include src="navigation.xhtml"/>
 </h:body>
 </html>

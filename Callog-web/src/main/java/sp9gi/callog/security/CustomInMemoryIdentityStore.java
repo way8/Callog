@@ -1,6 +1,8 @@
 package sp9gi.callog.security;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.security.enterprise.authentication.mechanism.http.AutoApplySession;
+import javax.security.enterprise.authentication.mechanism.http.RememberMe;
 import javax.security.enterprise.credential.Credential;
 import javax.security.enterprise.credential.UsernamePasswordCredential;
 import javax.security.enterprise.identitystore.CredentialValidationResult;
@@ -9,6 +11,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 @ApplicationScoped
+@AutoApplySession
+@RememberMe
 public class CustomInMemoryIdentityStore implements IdentityStore {
 
     @Override

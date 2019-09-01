@@ -38,31 +38,8 @@
 </h:head>
 <h:body>
 
+    <ui:include src="navigation.xhtml"></ui:include>
+    <ui:include src="newCall.xhtml"></ui:include>
 
-    <div align="center">
-        <h1>Edytowane ID to #{newCallBean.id} </h1>
-
-        <fieldset>
-            <legend>QSL</legend>
-
-
-            <o:graphicImage value="#{qslBean.process()}" dataURI="true"/>
-            <h:form>
-<!--                <td>Callsign:-->
-<!--                    <h:inputText value="#{newCallBean.call_sign}"-->
-<!--                                 required="true">-->
-<!--                    </h:inputText>-->
-<!--                </td>-->
-
-                <h:commandButton value="send mail" action="#{qslBean.sendMail}"/>
-
-            </h:form>
-
-        </fieldset>
-
-        <hr/>
-
-    </div>
-    <ui:include src="navigation.xhtml" />
 </h:body>
 </html>

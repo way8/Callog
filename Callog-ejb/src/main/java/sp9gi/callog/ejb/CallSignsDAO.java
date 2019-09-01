@@ -73,7 +73,7 @@ public class CallSignsDAO {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         Query query = entityManager.createQuery("SELECT c FROM CallSignsDB c WHERE c.call_sign = :CS");
-        query.setParameter("SC", callSign);
+        query.setParameter("CS", callSign);
         List<CallSignsDB> callSignsList = query.getResultList();
         return callSignsList;
     }
