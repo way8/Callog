@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
->
+      xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
     <f:viewParam name="removeId" value="#{newCallBean.removeId}"/>
@@ -37,8 +37,9 @@
 </h:head>
 <h:body>
 
+    <ui:include src="navigation.xhtml"/>
 
-
+    <p:spinner />
 
     <div class="container" align="center">
     <h:dataTable value="#{calls.callList}" var="c"
@@ -92,6 +93,6 @@
 
     </div>
 
-    <ui:include src="navigation.xhtml"/>
+
 </h:body>
 </html>
