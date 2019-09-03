@@ -7,6 +7,7 @@ import sp9gi.callog.jpa.CallSignsDB;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.util.logging.Logger;
 
 @ManagedBean
 @SessionScoped
@@ -24,6 +25,7 @@ public class NewCallBean {
 
     private int removeId;
 
+    private static Logger LOGGER = Logger.getLogger("NewCallBean");
 
     //przesyła dane do DAO i otwiera stronę z listą
     public String addData() {
@@ -34,7 +36,7 @@ public class NewCallBean {
         return "logbook";
     }
 
-    //method to fill in the from in showCall.xhtml
+    //method to fill in the from in updateCall.xhtml
     public void showCall(){
         CallSignsDAO show = new CallSignsDAO();
 
@@ -60,6 +62,14 @@ public class NewCallBean {
         CallSignsDAO delete = new CallSignsDAO();
         delete.deleteCall(this.id);
     }
+
+    public String updateId (int IdUpd){
+        LOGGER.info("ustawiono od nasdsdsd ");
+        this.id = IdUpd;
+        LOGGER.info("ustawiono od na ");
+        return "updateCall";
+    }
+
 
     //Getters and setters
 
