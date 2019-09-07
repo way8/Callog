@@ -5,14 +5,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-
 <f:view>
     <h:head>
-        <h:outputStylesheet>
-            h3 {
-                text-align: center;
-            }
-        </h:outputStylesheet>
 
         <f:facet name="first">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,36 +28,20 @@
         <f:facet name="last">
 
         </f:facet>
+
     </h:head>
     <h:body>
+        <br></br>
 
         <ui:include src="navigation.xhtml" />
+        <div align="center">
+            <p:outputLabel>Do You really want to log out #{request.userPrincipal.name}?</p:outputLabel>
 
-        <p:outputPanel>
-            <div class="ui-g">
-                <div class="ui-g-4"/>
-                <div class="ui-g-4">
-                    <h3>Login</h3>
+            <h:form>
+                <h:commandButton value="Logout" action="#{logoutBacking.submit}"/>
+            </h:form>
 
-                    <h:form id="login">
-                        <p:messages id="messages" globalOnly="true"/>
-
-                        <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
-
-                            <p:outputLabel value="Callsign"/>
-                            <p:inputText value="#{loginBacking.callsign}"/>
-<p></p>
-
-                            <p:outputLabel for="password" value="Password"/>
-                            <p:inputText type="password" id="password" value="#{loginBacking.password}"/>
-                            <p:message for="password"/>
-
-                            <p:commandButton id="submit" update="@form" value="Login" action="#{loginBacking.submit}"/>
-                        </h:panelGrid>
-                    </h:form>
-                </div>
-            </div>
-        </p:outputPanel>
+        </div>
     </h:body>
 </f:view>
 </html>

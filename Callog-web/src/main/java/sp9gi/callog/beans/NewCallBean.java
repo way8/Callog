@@ -7,11 +7,15 @@ import sp9gi.callog.jpa.CallSignsDB;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Logger;
 
 @ManagedBean
 @SessionScoped
-public class NewCallBean {
+public class NewCallBean implements Serializable {
+
+    private static final long serialVersionUID = 94235189;
 
     private int id;
     private String call_sign;
@@ -22,9 +26,7 @@ public class NewCallBean {
     private String raport_received;
     private String mail;
     private String password;
-
     private int removeId;
-
     private static Logger LOGGER = Logger.getLogger("NewCallBean");
 
     //przesyła dane do DAO i otwiera stronę z listą
@@ -39,7 +41,7 @@ public class NewCallBean {
     //method to fill in the from in updateCall.xhtml
     public void showCall(){
         CallSignsDAO show = new CallSignsDAO();
-
+        LOGGER.info("ustawiono id w showcall na " + id);
         //we get only one position form DB, so we always want to get index 0 from the list
         call_sign = show.getSingleCallSign(id).get(0).getCall_sign();
         operator_name = show.getSingleCallSign(id).get(0).getOperator_name();
@@ -48,6 +50,7 @@ public class NewCallBean {
         raport_send = show.getSingleCallSign(id).get(0).getRaport_send();
         raport_received = show.getSingleCallSign(id).get(0).getRaport_received();
         mail = show.getSingleCallSign(id).get(0).getMail();
+        LOGGER.info("pobrano np. " + id + call_sign + operator_name);
 
     }
 
@@ -62,11 +65,10 @@ public class NewCallBean {
         CallSignsDAO delete = new CallSignsDAO();
         delete.deleteCall(this.id);
     }
-
-    public String updateId (int IdUpd){
-        LOGGER.info("ustawiono od nasdsdsd ");
-        this.id = IdUpd;
-        LOGGER.info("ustawiono od na ");
+//ustawia wartośc id
+    public String updateId (int idUpd){
+        this.id = idUpd;
+        LOGGER.info("ustawiono id na " + id);
         return "updateCall";
     }
 

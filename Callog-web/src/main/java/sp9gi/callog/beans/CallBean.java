@@ -15,15 +15,11 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class CallBean implements Serializable{
 
-//    //dependency injection
-//    @ManagedProperty(value = "#{loginBacking}")
-//    private LoginBacking loginBacking;
-
 
     private static final long serialVersionUID = 1L;
     private Logger logger = Logger.getLogger("calls");
 
-    private List<CallSignsDB> newsList;
+//    private List<CallSignsDB> List;
 
 
     public void addData(){
@@ -51,8 +47,8 @@ public class CallBean implements Serializable{
 
 
 
-    public void setNewsList(List<CallSignsDB> newsList) {
-        this.newsList = newsList;
-    }
+//    public void setNewsList(List<CallSignsDB> newsList) {
+//        this.newsList = newsList;
+//    }
 
  }
