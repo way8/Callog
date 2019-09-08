@@ -3,6 +3,7 @@ package sp9gi.callog.jpa;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 //id; callsign; op. name; data; band; mode; rap send; rap rcv, mail, password
@@ -21,9 +22,6 @@ public class CallSignsDB {
     @Column(name = "operator_name")
     private String operator_name;
 
-    @Column(name = "contact_date")
-    private String contact_date;
-
     @Column(name = "band")
     private String band;
 
@@ -39,18 +37,33 @@ public class CallSignsDB {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "date")
+    private Date date;
+
+    @Column(name = "mode")
+    private String mode;
+
+    @Column(name = "confirmation")
+    private String confirmation;
+
+    @Column(name = "note")
+    private String note;
+
     public CallSignsDB() {
     }
 
-    public CallSignsDB(String call_sign, String operator_name, String contact_date, String band, String raport_send, String raport_received, String mail, String password) {
+    public CallSignsDB(String call_sign, String operator_name, String band, String raport_send, String raport_received, String mail, String password, Date date, String mode, String confirmation, String note) {
         this.call_sign = call_sign;
         this.operator_name = operator_name;
-        this.contact_date = contact_date;
         this.band = band;
         this.raport_send = raport_send;
         this.raport_received = raport_received;
         this.mail = mail;
         this.password = password;
+        this.date = date;
+        this.mode = mode;
+        this.confirmation = confirmation;
+        this. note = note;
     }
 
     //Getters and Setters
@@ -76,14 +89,6 @@ public class CallSignsDB {
 
     public void setOperator_name(String operator_name) {
         this.operator_name = operator_name;
-    }
-
-    public String getContact_date() {
-        return contact_date;
-    }
-
-    public void setContact_date(String contact_date) {
-        this.contact_date = contact_date;
     }
 
     public String getBand() {
@@ -125,5 +130,21 @@ public class CallSignsDB {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Date getDate() { return date; }
+
+    public void setDate(Date date) { this.date = date; }
+
+    public String getMode() { return mode; }
+
+    public void setMode(String mode) { this.mode = mode; }
+
+    public String getConfirmation() { return confirmation; }
+
+    public void setConfirmation(String confirmation) { this.confirmation = confirmation; }
+
+    public String getNote() { return note; }
+
+    public void setNote(String note) { this.note = note; }
 }
 

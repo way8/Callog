@@ -8,6 +8,8 @@ import sp9gi.callog.jpa.CallSignsDB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -26,6 +28,10 @@ public class NewCallBean implements Serializable {
     private String raport_received;
     private String mail;
     private String password;
+    private Date date;
+    private String mode;
+    private String confirmation;
+    private String note;
     private int removeId;
     private static Logger LOGGER = Logger.getLogger("NewCallBean");
 
@@ -34,7 +40,7 @@ public class NewCallBean implements Serializable {
 
         CallSignsDAO add = new CallSignsDAO();
 
-        add.addData2(this.call_sign, this.operator_name, this.contact_date, this.band, this.raport_send, this.raport_received, this.mail, this.password);
+        add.addData2(this.call_sign, this.operator_name, this.band, this.raport_send, this.raport_received, this.mail, this.password, this.date, this.mode, this.confirmation, this.note);
         return "logbook";
     }
 
@@ -45,18 +51,22 @@ public class NewCallBean implements Serializable {
         //we get only one position form DB, so we always want to get index 0 from the list
         call_sign = show.getSingleCallSign(id).get(0).getCall_sign();
         operator_name = show.getSingleCallSign(id).get(0).getOperator_name();
-        contact_date = show.getSingleCallSign(id).get(0).getContact_date();
         band = show.getSingleCallSign(id).get(0).getBand();
         raport_send = show.getSingleCallSign(id).get(0).getRaport_send();
         raport_received = show.getSingleCallSign(id).get(0).getRaport_received();
         mail = show.getSingleCallSign(id).get(0).getMail();
-        LOGGER.info("pobrano np. " + id + call_sign + operator_name);
+        date = show.getSingleCallSign(id).get(0).getDate();
+        mode = show.getSingleCallSign(id).get(0).getMode();
+        confirmation = show.getSingleCallSign(id).get(0).getConfirmation();
+        note = show.getSingleCallSign(id).get(0).getNote();
+        LOGGER.info("pobrano " + id + " " + call_sign + " " + operator_name);
+
 
     }
 
     public String updateCall() {
         CallSignsDAO update = new CallSignsDAO();
-        update.updateDB(this.id, this.call_sign, this.operator_name, this.contact_date, this.band, this.raport_send, this.raport_received, this.mail);
+        update.updateDB(this.id, this.call_sign, this.operator_name, this.band, this.raport_send, this.raport_received, this.mail, this.date, this.mode, this.confirmation, this.note);
 
         return "logbook";
     }
@@ -65,13 +75,12 @@ public class NewCallBean implements Serializable {
         CallSignsDAO delete = new CallSignsDAO();
         delete.deleteCall(this.id);
     }
-//ustawia wartośc id
+//ustawia wartośc id dla strony updateCall ()
     public String updateId (int idUpd){
         this.id = idUpd;
         LOGGER.info("ustawiono id na " + id);
         return "updateCall";
     }
-
 
     //Getters and setters
 
@@ -109,9 +118,7 @@ public class NewCallBean implements Serializable {
         this.operator_name = operator_name;
     }
 
-    public String getContact_date() {
-        return contact_date;
-    }
+    public String getContact_date() { return contact_date; }
 
     public void setContact_date(String contact_date) {
         this.contact_date = contact_date;
@@ -156,4 +163,20 @@ public class NewCallBean implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Date getDate() { return date; }
+
+    public void setDate(Date date) { this.date = date; }
+
+    public String getMode() { return mode; }
+
+    public void setMode(String mode) { this.mode = mode; }
+
+    public String getConfirmation() { return confirmation; }
+
+    public void setConfirmation(String confirmation) { this.confirmation = confirmation; }
+
+    public String getNote() { return note; }
+
+    public void setNote(String note) { this.note = note; }
 }

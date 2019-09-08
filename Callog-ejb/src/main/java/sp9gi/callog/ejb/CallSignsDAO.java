@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -33,10 +34,10 @@ public class CallSignsDAO {
     }
 
     //dodaje wpis do bazy
-    public void addData2(String call_sign, String operator_name, String contact_date, String band, String raport_send, String raport_received, String mail, String password) {
+    public void addData2(String call_sign, String operator_name, String band, String raport_send, String raport_received, String mail, String password, Date date, String mode, String confirmation, String note) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
         LOGGER.info("tworzy się nowy obiekt client");
-        CallSignsDB ham2 = new CallSignsDB(call_sign, operator_name, contact_date, band, raport_send, raport_received, mail, password);
+        CallSignsDB ham2 = new CallSignsDB(call_sign, operator_name, band, raport_send, raport_received, mail, password, date, mode, confirmation, note);
         LOGGER.info("rozpoczęto transakcję");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
@@ -79,13 +80,13 @@ public class CallSignsDAO {
     }
 
 
-    public void updateDB(int id, String call_sign, String operator_name, String contact_date, String band, String raport_send, String raport_received, String mail) {
+    public void updateDB(int id, String call_sign, String operator_name, String band, String raport_send, String raport_received, String mail, Date date, String mode, String confirmation, String note) {
         LOGGER.info("rozpoczęto transakcję update");
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("primary");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Query query = entityManager.createQuery("UPDATE CallSignsDB  c SET c.call_sign = ?2, c.operator_name = ?3, c.contact_date = ?4, c.band = ?5, c.raport_send = ?6, c.raport_received = ?7, c.mail = ?8 WHERE c.id = ?1");
+        Query query = entityManager.createQuery("UPDATE CallSignsDB  c SET c.call_sign = ?2, c.operator_name = ?3, c.band = ?4, c.raport_send = ?5, c.raport_received = ?6, c.mail = ?7, c.date = ?8, c.mode = ?9, c.confirmation = ?10, c.note = ?11 WHERE c.id = ?1");
         entityManager.getTransaction().begin();
-        query.setParameter(1, id).setParameter(2, call_sign).setParameter(3, operator_name).setParameter(4, contact_date).setParameter(5, band).setParameter(6, raport_send).setParameter(7, raport_received).setParameter(8, mail);
+        query.setParameter(1, id).setParameter(2, call_sign).setParameter(3, operator_name).setParameter(4, band).setParameter(5, raport_send).setParameter(6, raport_received).setParameter(7, mail).setParameter(8, date).setParameter(9, mode).setParameter(10, confirmation).setParameter(11, note);
         query.executeUpdate();
         entityManager.getTransaction().commit();
 

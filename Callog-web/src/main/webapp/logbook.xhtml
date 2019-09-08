@@ -64,8 +64,10 @@
 
         <h:column>
             <f:facet name="header">Date</f:facet>
-            #{c.contact_date}
-        </h:column>
+            <h:outputText value="#{c.date}">
+                <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:outputText>
+         </h:column>
 
         <h:column>
             <f:facet name="header">Band</f:facet>
