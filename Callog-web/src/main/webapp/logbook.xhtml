@@ -65,13 +65,18 @@
         <h:column>
             <f:facet name="header">Date</f:facet>
             <h:outputText value="#{c.date}">
-                <f:convertDateTime pattern="dd/MM/yyyy" />
-            </h:outputText>
+            <f:convertDateTime pattern="dd/MM/yyyy" />
+        </h:outputText>
          </h:column>
 
         <h:column>
             <f:facet name="header">Band</f:facet>
             #{c.band}
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Mode</f:facet>
+            #{c.mode}
         </h:column>
 
         <h:column>
@@ -83,6 +88,7 @@
             <f:facet name="header">Raport_send</f:facet>
             #{c.raport_send}
         </h:column>
+
 <!--        <h:column>-->
 <!--            <f:facet name="header">Edycja</f:facet>-->
 <!--            <h:link value="Edit " outcome="updateCall.xhtml?id=#{c.id}"/>-->

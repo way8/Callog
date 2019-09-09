@@ -30,6 +30,12 @@
 
     </f:facet>
 
+    <style type="text/css">
+        .value {
+            font-weight: bold;
+        }
+    </style>
+
 </h:head>
 <h:body>
 
@@ -39,7 +45,6 @@
         <h3>Enter data </h3>
 
         <fieldset>
-<!--            <legend>Oferty pozycjonowania</legend>-->
 
             <h:form>
                 <h:messages styleClass="error"/>
@@ -67,7 +72,6 @@
                         </td>
                     </tr>
                     <tr>
-
                         <td>Band:
                             <h:selectOneMenu value="#{newCallBean.band}">
                                 <f:selectItem itemValue="70cm" itemLabel="70cm"/>
@@ -77,6 +81,17 @@
                                 <f:selectItem itemValue="40m" itemLabel="40m"/>
                                 <f:selectItem itemValue="80m" itemLabel="80m"/>
                            </h:selectOneMenu>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mode:
+                            <h:selectOneMenu value="#{newCallBean.mode}">
+                                <f:selectItem itemValue="CW" itemLabel="CW"/>
+                                <f:selectItem itemValue="AM" itemLabel="AM"/>
+                                <f:selectItem itemValue="FM" itemLabel="FM"/>
+                                <f:selectItem itemValue="SSB" itemLabel="SSB"/>
+                                <f:selectItem itemValue="digital" itemLabel="digital"/>
+                            </h:selectOneMenu>
                         </td>
                     </tr>
                     <tr>
@@ -117,7 +132,15 @@
                             /></td>
                     </tr>
                     <tr>
-                        //method addData add call to DB and open logbook page
+                        <td>Do You want eQSL confirmation?:
+                            <h:selectOneRadio value = "#{newCallBean.confirmation}">
+                                <f:selectItem itemValue = "Yes" itemLabel = "Yes" />
+                                <f:selectItem itemValue = "No" itemLabel = "No" />
+                            </h:selectOneRadio>
+                        </td>
+                    </tr>
+                    <tr>
+<!--                        method addData add call to DB and open logbook page-->
                         <th>
                             <h:commandButton value="Add log"
                                              action="#{newCallBean.addData()}">
@@ -126,8 +149,6 @@
                     </tr>
                 </table>
             </h:form>
-
-
         </fieldset>
 
         <hr/>

@@ -39,8 +39,6 @@
 
     <ui:include src="navigation.xhtml"/>
 
-    <p:spinner />
-
     <div class="container" align="center">
     <h:dataTable value="#{calls.callList}" var="c"
                  styleClass="order-table"
@@ -76,6 +74,11 @@
         </h:column>
 
         <h:column>
+            <f:facet name="header">Mode</f:facet>
+            #{c.mode}
+        </h:column>
+
+        <h:column>
             <f:facet name="header">Report received</f:facet>
             #{c.raport_received}
         </h:column>
@@ -85,8 +88,20 @@
             #{c.raport_send}
         </h:column>
         <h:column>
+            <f:facet name="header">eQSL</f:facet>
+            #{c.confirmation}
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Notes</f:facet>
+            #{c.note}
+        </h:column>
+
+        <h:column>
             <f:facet name="header">Edycja</f:facet>
-            <h:link value="Edit " outcome="updateCall.xhtml?id=#{c.id}"/>
+            <h:form>
+                <h:commandButton value="Update" action="#{newCallBean.updateId(c.id)}"/>
+            </h:form>
             <h:link value="Del" outcome="logbook.xhtml?removeId=#{c.id}"/>
             <h:link value=" QSL " outcome="eqsl.xhtml?id=#{c.id}"/>
 
