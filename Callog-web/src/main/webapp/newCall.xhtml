@@ -4,6 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head><title>JSF 2.0: Strona startowa</title>
@@ -41,43 +42,57 @@
 
     <ui:include src="navigation.xhtml"/>
 
-
-        <h3>Enter data </h3>
-
     <fieldset>
 
         <h:form styleClass="form-horizontal">
-            <h:messages styleClass="error"/>
-            <div class="container">
-                <div class="row justify-content-center">
+             <div class="container">
+                <br/>
+                <h5 align="center">Enter here log data </h5>
+                <br/>
+                <div class="row justify-content-center top-buffer">
                     <h:outputLabel value="Callsign:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <h:inputText value="#{newCallBean.call_sign}" styleClass="form-control"
+                        <h:inputText id="callsign" value="#{newCallBean.call_sign}" styleClass="form-control" t:placeholder="Your Callsign"
                                      required="true"
                                      requiredMessage="Musisz podać znak"
                                      validatorMessage="Podaj poprawny znak">
                             <f:validateRegex pattern="\d?[a-zA-Z]{1,2}\d{1,4}[a-zA-Z]{1,4}"/>
-                        </h:inputText>
+                            </h:inputText>
+                        <div class="bg-danger">
+                            <h:messages for="callsign" styleClass="text-white"/>
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center top-buffer">
                     <h:outputLabel value="Operator name:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <h:inputText value="#{newCallBean.operator_name}" styleClass="form-control"
+                        <h:inputText id="name" value="#{newCallBean.operator_name}" styleClass="form-control" t:placeholder="Your Name"
                                      required="true"
                                      requiredMessage="Musisz podać imię"/>
-                    </div>
+                        <div class="bg-danger">
+                            <h:messages for="name" styleClass="text-white"/>
+                        </div>
+                        <p:message for="name"/>
+                        </div>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center top-buffer">
                     <h:outputLabel value="Contact date:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <p:calendar value="#{newCallBean.date}" pattern="dd-MM-yyyy"/>
+                        <p:calendar value="#{newCallBean.date}" pattern="dd-MM-yyyy" id="date" t:placeholder="Click to select"
+                                    required="true"
+                                    requiredMessage="Date is required"/>
+                        <div class="bg-danger">
+                            <h:messages for="date" styleClass="text-white"/>
+                        </div>
+                        <p:message for="date"/>
+
                     </div>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center top-buffer">
                     <h:outputLabel value="Band:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
                         <h:selectOneMenu value="#{newCallBean.band}" styleClass="custom-select">
@@ -91,7 +106,7 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center top-buffer">
                     <h:outputLabel value="Mode:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
                         <h:selectOneMenu value="#{newCallBean.mode}" styleClass="custom-select">
@@ -104,53 +119,61 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center top-buffer">
                     <h:outputLabel value="Report send:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <h:inputText value="#{newCallBean.raport_send}" styleClass="form-control"
+                        <h:inputText id="rs" value="#{newCallBean.raport_send}" styleClass="form-control" t:placeholder="Report You gave me"
                                      required="true"
                                      requiredMessage="Musisz podać raport"
                                      validatorMessage="Podaj poprawny raport">
                             <f:validateRegex pattern="[1-5][1-9]"/>
                         </h:inputText>
+                        <div class="bg-danger">
+                            <h:messages for="rs" styleClass="text-white"/>
+                        </div>
                     </div>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center top-buffer">
                     <h:outputLabel value="Report received:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <h:inputText value="#{newCallBean.raport_received}" styleClass="form-control"
+                        <h:inputText id="rr" value="#{newCallBean.raport_received}" styleClass="form-control" t:placeholder="Report I gave You"
                                      required="true"
                                      requiredMessage="Musisz podać raport"
                                      validatorMessage="Podaj poprawny raport">
                             <f:validateRegex pattern="[1-5][1-9]"/>
                         </h:inputText>
+                        <div class="bg-danger">
+                            <h:messages for="rr" styleClass="text-white"/>
+                        </div>
                     </div>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center top-buffer">
                     <h:outputLabel value="E-mail:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <h:inputText value="#{newCallBean.mail}" styleClass="form-control"
+                        <h:inputText id="mail" value="#{newCallBean.mail}" styleClass="form-control" t:placeholder="Your e-mail"
                                      required="true"
                                      requiredMessage="Musisz podać mail"
                                      validatorMessage="ID musi byc poprawnym emailem">
                             <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.(com|net|org|edu|pl)"/>
                         </h:inputText>
+                        <div class="bg-danger">
+                            <h:messages for="mail" styleClass="text-white"/>
+                        </div>
                     </div>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center top-buffer">
                     <h:outputLabel value="Password:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
                         <h:inputSecret value="#{newCallBean.password}" styleClass="form-control"
-                                       required="false"
-                                       requiredMessage="Musisz podać hasło">
+                                       t:placeholder="Password for account"
+                                       required="false">
                         </h:inputSecret>
                     </div>
                 </div>
-
-                <div class="row justify-content-center">
+                <div class="row justify-content-center top-buffer">
                     <h:outputLabel value="eQSL conf.?" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
                         <h:selectOneRadio value="#{newCallBean.confirmation}" styleClass="form-check">
@@ -160,12 +183,13 @@
                     </div>
                 </div>
             </div>
+
             <!--                        method addData add call to DB and open logbook page-->
-
-            <h:commandButton value="Add log"
-                             action="#{newCallBean.addData()}">
-            </h:commandButton>
-
+            <div align="center">
+                <h:commandButton value="Add log" styleClass="btn btn-outline-dark"
+                                 action="#{newCallBean.addData()}">
+                </h:commandButton>
+            </div>
         </h:form>
 
 
