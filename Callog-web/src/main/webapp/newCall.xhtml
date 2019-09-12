@@ -10,21 +10,21 @@
 <h:head><title>JSF 2.0: Strona startowa</title>
 
     <f:facet name="first">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
         <title>primestrap</title>
     </f:facet>
 
     <f:facet name="middle">
-        <h:outputStylesheet name="bootstrap/css/bootstrap.css" />
-        <h:outputStylesheet name="css/dashboard.css" />
+        <h:outputStylesheet name="bootstrap/css/bootstrap.css"/>
+        <h:outputStylesheet name="css/dashboard.css"/>
         <h:outputStylesheet library="css" name="table-style.css"/>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"/>
 
-        <h:outputScript name="bootstrap/js/bootstrap.js" />
+        <h:outputScript name="bootstrap/js/bootstrap.js"/>
     </f:facet>
 
     <f:facet name="last">
@@ -37,6 +37,7 @@
         }
     </style>
 
+
 </h:head>
 <h:body>
 
@@ -45,68 +46,74 @@
     <fieldset>
 
         <h:form styleClass="form-horizontal">
-             <div class="container">
+            <div class="container">
                 <br/>
-                <h5 align="center">Enter here log data </h5>
+                <h5 align="center">Enter log data here</h5>
                 <br/>
                 <div class="row justify-content-center top-buffer">
+                    <div class="col-md-3"></div>
                     <h:outputLabel value="Callsign:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <h:inputText id="callsign" value="#{newCallBean.call_sign}" styleClass="form-control" t:placeholder="Your Callsign"
+                        <h:inputText id="callsign" value="#{newCallBean.call_sign}" styleClass="form-control"
+                                     t:placeholder="Your Callsign"
                                      required="true"
-                                     requiredMessage="Musisz podać znak"
-                                     validatorMessage="Podaj poprawny znak">
+                                     requiredMessage="Callsign is required"
+                                     validatorMessage="Enter a valid callsign">
                             <f:validateRegex pattern="\d?[a-zA-Z]{1,2}\d{1,4}[a-zA-Z]{1,4}"/>
-                            </h:inputText>
-                        <div class="bg-danger">
-                            <h:messages for="callsign" styleClass="text-white"/>
-                        </div>
-
+                        </h:inputText>
                     </div>
+                    <div class="col-md-3"><p:message for="callsign"/></div>
                 </div>
 
                 <div class="row justify-content-center top-buffer">
+                    <div class="col-md-3"></div>
                     <h:outputLabel value="Operator name:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <h:inputText id="name" value="#{newCallBean.operator_name}" styleClass="form-control" t:placeholder="Your Name"
+                        <h:inputText id="name" value="#{newCallBean.operator_name}" styleClass="form-control"
+                                     t:placeholder="Your Name"
                                      required="true"
-                                     requiredMessage="Musisz podać imię"/>
-                        <div class="bg-danger">
-                            <h:messages for="name" styleClass="text-white"/>
-                        </div>
-                        <p:message for="name"/>
-                        </div>
+                                     requiredMessage="Name is required"/>
+                    </div>
+                    <div class="col-md-3"><p:message for="name"/></div>
                 </div>
 
                 <div class="row justify-content-center top-buffer">
+                    <div class="col-md-3"></div>
                     <h:outputLabel value="Contact date:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <p:calendar value="#{newCallBean.date}" pattern="dd-MM-yyyy" id="date" t:placeholder="Click to select"
+                        <p:calendar value="#{newCallBean.date}" pattern="dd-MM-yyyy" id="date"
+                                    t:placeholder="Click to select"
                                     required="true"
                                     requiredMessage="Date is required"/>
-                        <div class="bg-danger">
-                            <h:messages for="date" styleClass="text-white"/>
-                        </div>
-                        <p:message for="date"/>
-
                     </div>
+                    <div class="col-md-3"><p:message for="date"/></div>
                 </div>
 
                 <div class="row justify-content-center top-buffer">
+                    <div class="col-md-3"></div>
                     <h:outputLabel value="Band:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
                         <h:selectOneMenu value="#{newCallBean.band}" styleClass="custom-select">
                             <f:selectItem itemValue="70cm" itemLabel="70cm"/>
                             <f:selectItem itemValue="2m" itemLabel="2m"/>
+                            <f:selectItem itemValue="4m" itemLabel="4m"/>
+                            <f:selectItem itemValue="6m" itemLabel="6m"/>
+                            <f:selectItem itemValue="10m" itemLabel="10m"/>
+                            <f:selectItem itemValue="12m" itemLabel="12m"/>
+                            <f:selectItem itemValue="15m" itemLabel="15m"/>
+                            <f:selectItem itemValue="17m" itemLabel="17m"/>
                             <f:selectItem itemValue="20m" itemLabel="20m"/>
-                            <f:selectItem itemValue="20m" itemLabel="30m"/>
+                            <f:selectItem itemValue="30m" itemLabel="30m"/>
                             <f:selectItem itemValue="40m" itemLabel="40m"/>
                             <f:selectItem itemValue="80m" itemLabel="80m"/>
+                            <f:selectItem itemValue="160m" itemLabel="160m"/>
                         </h:selectOneMenu>
                     </div>
+                    <div class="col-md-3"></div>
                 </div>
 
                 <div class="row justify-content-center top-buffer">
+                    <div class="col-md-3"></div>
                     <h:outputLabel value="Mode:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
                         <h:selectOneMenu value="#{newCallBean.mode}" styleClass="custom-select">
@@ -117,54 +124,56 @@
                             <f:selectItem itemValue="digital" itemLabel="digital"/>
                         </h:selectOneMenu>
                     </div>
+                    <div class="col-md-3"></div>
                 </div>
 
                 <div class="row justify-content-center top-buffer">
+                    <div class="col-md-3"></div>
                     <h:outputLabel value="Report send:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <h:inputText id="rs" value="#{newCallBean.raport_send}" styleClass="form-control" t:placeholder="Report You gave me"
+                        <h:inputText id="rs" value="#{newCallBean.raport_send}" styleClass="form-control"
+                                     t:placeholder="Report You gave me"
                                      required="true"
-                                     requiredMessage="Musisz podać raport"
-                                     validatorMessage="Podaj poprawny raport">
+                                     requiredMessage="Report is required"
+                                     validatorMessage="Enter a valid report">
                             <f:validateRegex pattern="[1-5][1-9]"/>
                         </h:inputText>
-                        <div class="bg-danger">
-                            <h:messages for="rs" styleClass="text-white"/>
-                        </div>
                     </div>
+                    <div class="col-md-3"><p:message for="rs"/></div>
                 </div>
 
                 <div class="row justify-content-center top-buffer">
+                    <div class="col-md-3"></div>
                     <h:outputLabel value="Report received:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <h:inputText id="rr" value="#{newCallBean.raport_received}" styleClass="form-control" t:placeholder="Report I gave You"
+                        <h:inputText id="rr" value="#{newCallBean.raport_received}" styleClass="form-control"
+                                     t:placeholder="Report I gave You"
                                      required="true"
-                                     requiredMessage="Musisz podać raport"
-                                     validatorMessage="Podaj poprawny raport">
+                                     requiredMessage="Report is required"
+                                     validatorMessage="Enter a valid report">
                             <f:validateRegex pattern="[1-5][1-9]"/>
                         </h:inputText>
-                        <div class="bg-danger">
-                            <h:messages for="rr" styleClass="text-white"/>
-                        </div>
                     </div>
+                    <div class="col-md-3"><p:message for="rr"/></div>
                 </div>
 
                 <div class="row justify-content-center top-buffer">
+                    <div class="col-md-3"></div>
                     <h:outputLabel value="E-mail:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
-                        <h:inputText id="mail" value="#{newCallBean.mail}" styleClass="form-control" t:placeholder="Your e-mail"
+                        <h:inputText id="mail" value="#{newCallBean.mail}" styleClass="form-control"
+                                     t:placeholder="Your e-mail"
                                      required="true"
-                                     requiredMessage="Musisz podać mail"
-                                     validatorMessage="ID musi byc poprawnym emailem">
+                                     requiredMessage="E-mail is required"
+                                     validatorMessage="Enter a valid e-mail">
                             <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.(com|net|org|edu|pl)"/>
                         </h:inputText>
-                        <div class="bg-danger">
-                            <h:messages for="mail" styleClass="text-white"/>
-                        </div>
                     </div>
+                    <div class="col-md-3"><p:message for="mail"/></div>
                 </div>
 
                 <div class="row justify-content-center top-buffer">
+                    <div class="col-md-3"></div>
                     <h:outputLabel value="Password:" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
                         <h:inputSecret value="#{newCallBean.password}" styleClass="form-control"
@@ -172,15 +181,19 @@
                                        required="false">
                         </h:inputSecret>
                     </div>
+                    <div class="col-md-3"></div>
                 </div>
+
                 <div class="row justify-content-center top-buffer">
+                    <div class="col-md-3"></div>
                     <h:outputLabel value="eQSL conf.?" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
                         <h:selectOneRadio value="#{newCallBean.confirmation}" styleClass="form-check">
-                            <f:selectItem itemValue="Yes" itemLabel="Yes, please" styleClass="form-check"/>
-                            <f:selectItem itemValue="No" itemLabel="No, thanks" styleClass="form-check"/>
+                            <f:selectItem itemValue="Yes" itemLabel="&nbsp;Yes, please&nbsp;&nbsp;&nbsp;" styleClass="form-check"/>
+                            <f:selectItem itemValue="No" itemLabel="&nbsp;No, thanks&nbsp;" styleClass="form-check"/>
                         </h:selectOneRadio>
                     </div>
+                    <div class="col-md-3"></div>
                 </div>
             </div>
 
@@ -192,10 +205,9 @@
             </div>
         </h:form>
 
-
     </fieldset>
 
-    <hr/>
+    <ui:include src="footer.xhtml"/>
 
 
 </h:body>

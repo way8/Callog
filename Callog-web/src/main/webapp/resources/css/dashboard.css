@@ -1,3 +1,9 @@
+.footer {
+    background: #F8F9FB;
+    color: #ddd;
+    padding: 2rem;
+}
+
 /*
  * Base structure
  */
@@ -94,4 +100,3 @@ body {
     display: inline-block;
     border-radius: 50%;
 }
-
