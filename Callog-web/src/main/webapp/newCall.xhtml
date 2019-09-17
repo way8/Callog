@@ -189,14 +189,15 @@
                     <h:outputLabel value="eQSL conf.?" styleClass="col-md-2 col-form-label"/>
                     <div class="col-md-3">
                         <h:selectOneRadio value="#{newCallBean.confirmation}" styleClass="form-check">
-                            <f:selectItem itemValue="Yes" itemLabel="&nbsp;Yes, please&nbsp;&nbsp;&nbsp;" styleClass="form-check"/>
+                            <f:selectItem itemValue="Yes" itemLabel="&nbsp;Yes, please&nbsp;&nbsp;&nbsp;"
+                                          styleClass="form-check"/>
                             <f:selectItem itemValue="No" itemLabel="&nbsp;No, thanks&nbsp;" styleClass="form-check"/>
                         </h:selectOneRadio>
                     </div>
                     <div class="col-md-3"></div>
                 </div>
             </div>
-
+            <br/>
             <!--                        method addData add call to DB and open logbook page-->
             <div align="center">
                 <h:commandButton value="Add log" styleClass="btn btn-outline-dark"
