@@ -22,7 +22,6 @@ public class NewCallBean implements Serializable {
     private int id;
     private String call_sign;
     private String operator_name;
-    private String contact_date;
     private String band;
     private String raport_send;
     private String raport_received;
@@ -118,11 +117,11 @@ public class NewCallBean implements Serializable {
         this.operator_name = operator_name;
     }
 
-    public String getContact_date() { return contact_date; }
-
-    public void setContact_date(String contact_date) {
-        this.contact_date = contact_date;
-    }
+//    public String getContact_date() { return contact_date; }
+//
+//    public void setContact_date(String contact_date) {
+//        this.contact_date = contact_date;
+//    }
 
     public String getBand() {
         return band;

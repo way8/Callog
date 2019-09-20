@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -58,11 +59,12 @@ public class QslBean implements Serializable {
         g2d.setPaint(Color.BLACK);
         g2d.setFont(new Font("Rockness", Font.BOLD, 70));
         String cs = newCallBean.getCall_sign();
-        String da = newCallBean.getContact_date();
+        //Date to String
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String da = formatter.format(newCallBean.getDate());
         String ba = newCallBean.getBand();
         String re = newCallBean.getRaport_received();
-        //todo wprowadzić do bazy danych pozycję mode
-        String mo = "SSB";
+        String mo = newCallBean.getMode();
 
         g2d.drawString(cs, 120, 1000);
         g2d.drawString(da, 500, 1000);
@@ -109,9 +111,9 @@ public class QslBean implements Serializable {
         email.setSSLOnConnect(true);
         try {
             email.setFrom("sp9gi.qsl@gmail.com");
-            email.setSubject("TestMail");
-            email.setMsg("This is a test mail ... :-)");
-            email.addTo("sylwester.sp9gi@gmail.com");
+            email.setSubject("eQSL");
+            email.setMsg("This is your eQSL card - regards SP9GI");
+            email.addTo(newCallBean.getMail());
             // add the attachment
             email.attach(attachment);
             // send the email
