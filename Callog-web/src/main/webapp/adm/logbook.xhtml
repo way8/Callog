@@ -38,7 +38,8 @@
 <h:body>
 
     <ui:include src="navigation.xhtml"/>
-
+    <div class="page-container">
+    <div class="content-wrap">
     <div class="container" align="center">
     <h:dataTable value="#{calls.callList}" var="c"
                  styleClass="order-table"
@@ -109,7 +110,9 @@
     </h:dataTable>
 
     </div>
-    <ui:include src="../footer.xhtml"/>
+    </div>
+        <ui:include src="../footer.xhtml"/>
+    </div>
 
 </h:body>
 </html>
