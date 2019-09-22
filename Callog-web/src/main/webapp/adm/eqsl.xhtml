@@ -41,15 +41,16 @@
     <ui:include src="navigation.xhtml"/>
 
     <div class="page-container">
-        <div class="content-wrap">
-
-            <h1>Edytowane ID to #{newCallBean.id} </h1>
+        <div class="content-wrap" align="center">
+            <br></br>
+            <h5>You are editing ID no. #{newCallBean.id} </h5>
+            <br></br>
             <o:graphicImage value="#{qslBean.process()}" dataURI="true"/>
             <fieldset>
-                <legend>QSL</legend>
 
+                <br></br>
                 <h:form>
-                    <h:commandButton value="Send mail" styleClass="btn btn-outline-dark"
+                    <h:commandButton value="Send e-mail with eQSL" styleClass="btn btn-outline-dark"
                                      action="#{qslBean.sendMail()}">
                     </h:commandButton>
                 </h:form>

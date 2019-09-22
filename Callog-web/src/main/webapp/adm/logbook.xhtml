@@ -39,78 +39,85 @@
 
     <ui:include src="navigation.xhtml"/>
     <div class="page-container">
-    <div class="content-wrap">
-    <div class="container" align="center">
-    <h:dataTable value="#{calls.callList}" var="c"
-                 styleClass="order-table"
-                 headerClass="order-table-header"
-                 rowClasses="order-table-odd-row,order-table-even-row"
-    >
+        <div class="content-wrap">
+            <br></br>
+            <div class="container" align="center">
+                <h:dataTable value="#{calls.callList}" var="c"
+                             styleClass="order-table"
+                             headerClass="order-table-header"
+                             rowClasses="order-table-odd-row,order-table-even-row"
+                >
 
-        <h:column>
-            <f:facet name="header">Id</f:facet>
-            #{c.id}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        #{c.id}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Callsign</f:facet>
-            #{c.call_sign}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Callsign</f:facet>
+                        #{c.call_sign}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Name</f:facet>
-            #{c.operator_name}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Name</f:facet>
+                        #{c.operator_name}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Date</f:facet>
-            <h:outputText value="#{c.date}">
-                <f:convertDateTime pattern="dd/MM/yyyy" />
-            </h:outputText>
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Date</f:facet>
+                        <h:outputText value="#{c.date}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Band</f:facet>
-            #{c.band}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Band</f:facet>
+                        #{c.band}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Mode</f:facet>
-            #{c.mode}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Mode</f:facet>
+                        #{c.mode}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Report received</f:facet>
-            #{c.raport_received}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Rep. rcv.</f:facet>
+                        #{c.raport_received}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Raport_send</f:facet>
-            #{c.raport_send}
-        </h:column>
-        <h:column>
-            <f:facet name="header">eQSL</f:facet>
-            #{c.confirmation}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Rep. send</f:facet>
+                        #{c.raport_send}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">eQSL</f:facet>
+                        #{c.confirmation}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Notes</f:facet>
-            #{c.note}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Notes</f:facet>
+                        #{c.note}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Edycja</f:facet>
-            <h:form>
-                <h:commandButton value="Update" action="#{newCallBean.updateId(c.id)}"/>
-            </h:form>
-            <h:link value="Del" outcome="logbook.xhtml?removeId=#{c.id}"/>
-            <h:link value=" QSL " outcome="eqsl.xhtml?id=#{c.id}"/>
+                    <h:column>
+                        <h:link value="eQSL" styleClass="btn btn-outline-dark" outcome="eqsl.xhtml?id=#{c.id}"/>
+                    </h:column>
 
-        </h:column>
-    </h:dataTable>
+                    <h:column>
+                        <h:form>
+                            <f:facet name="header">Edit</f:facet>
+                            <h:commandButton value="Update" styleClass="btn btn-outline-dark" action="#{newCallBean.updateId(c.id)}"/>
+                        </h:form>
+                    </h:column>
 
-    </div>
-    </div>
+                    <h:column>
+                        <h:link value="Del" styleClass="btn btn-outline-danger" outcome="logbook.xhtml?removeId=#{c.id}"/>
+                    </h:column>
+
+                </h:dataTable>
+
+            </div>
+        </div>
         <ui:include src="../footer.xhtml"/>
     </div>
 

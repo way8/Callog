@@ -8,6 +8,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -56,21 +58,26 @@ public class QslBean implements Serializable {
         BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = img.createGraphics();
         g2d.drawImage(old, 0, 0, w, h, null);
-        g2d.setPaint(Color.BLACK);
-        g2d.setFont(new Font("Rockness", Font.BOLD, 70));
+        g2d.setPaint(Color.BLUE);
+        g2d.setFont(new Font("Rockness", Font.BOLD, 45));
         String cs = newCallBean.getCall_sign();
-        //Date to String
+        //Date to String and subtract one day because of some failure
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String da = formatter.format(newCallBean.getDate());
+        Calendar c = Calendar.getInstance();
+        c.setTime(newCallBean.getDate());
+        c.add(Calendar.DAY_OF_MONTH, -1);
+        Date DateMinusOne = c.getTime();
+
+        String da = formatter.format(DateMinusOne);
         String ba = newCallBean.getBand();
         String re = newCallBean.getRaport_received();
         String mo = newCallBean.getMode();
 
-        g2d.drawString(cs, 120, 1000);
-        g2d.drawString(da, 500, 1000);
-        g2d.drawString(ba, 920, 1000);
-        g2d.drawString(re, 1120, 1000);
-        g2d.drawString(mo, 1270, 1000);
+        g2d.drawString(cs, 60, 650);
+        g2d.drawString(da, 320, 650);
+        g2d.drawString(ba, 600, 650);
+        g2d.drawString(re, 730, 650);
+        g2d.drawString(mo, 820, 650);
         g2d.dispose();
 
         //saving image on the server in standalone/data folder
