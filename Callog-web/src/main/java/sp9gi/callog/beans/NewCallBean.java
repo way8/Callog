@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -47,7 +48,7 @@ public class NewCallBean implements Serializable {
     public void showCall(){
         CallSignsDAO show = new CallSignsDAO();
         LOGGER.info("ustawiono id w showcall na " + id);
-        //we get only one position form DB, so we always want to get index 0 from the list
+        //we got only one position form DB, so we always want to get index 0 from the list
         call_sign = show.getSingleCallSign(id).get(0).getCall_sign();
         operator_name = show.getSingleCallSign(id).get(0).getOperator_name();
         band = show.getSingleCallSign(id).get(0).getBand();
@@ -80,6 +81,7 @@ public class NewCallBean implements Serializable {
         LOGGER.info("ustawiono id na " + id);
         return "updateCall";
     }
+
 
     //Getters and setters
 
@@ -116,12 +118,6 @@ public class NewCallBean implements Serializable {
     public void setOperator_name(String operator_name) {
         this.operator_name = operator_name;
     }
-
-//    public String getContact_date() { return contact_date; }
-//
-//    public void setContact_date(String contact_date) {
-//        this.contact_date = contact_date;
-//    }
 
     public String getBand() {
         return band;
@@ -178,4 +174,5 @@ public class NewCallBean implements Serializable {
     public String getNote() { return note; }
 
     public void setNote(String note) { this.note = note; }
+
 }

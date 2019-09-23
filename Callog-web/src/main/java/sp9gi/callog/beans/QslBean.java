@@ -63,12 +63,12 @@ public class QslBean implements Serializable {
         String cs = newCallBean.getCall_sign();
         //Date to String and subtract one day because of some failure
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Calendar c = Calendar.getInstance();
-        c.setTime(newCallBean.getDate());
-        c.add(Calendar.DAY_OF_MONTH, -1);
-        Date DateMinusOne = c.getTime();
+//        Calendar c = Calendar.getInstance();
+//        c.setTime(newCallBean.getDate());
+//        c.add(Calendar.DAY_OF_MONTH, -1);
+//        Date DateMinusOne = c.getTime();
 
-        String da = formatter.format(DateMinusOne);
+        String da = formatter.format(newCallBean.getDate());
         String ba = newCallBean.getBand();
         String re = newCallBean.getRaport_received();
         String mo = newCallBean.getMode();

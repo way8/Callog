@@ -100,18 +100,18 @@
                     </h:column>
 
                     <h:column>
-                        <h:link value="eQSL" styleClass="btn btn-outline-dark" outcome="eqsl.xhtml?id=#{c.id}"/>
+                        <h:link value="eQSL" styleClass="btn btn-outline-dark btn-sm" outcome="eqsl.xhtml?id=#{c.id}"/>
                     </h:column>
 
                     <h:column>
                         <h:form>
                             <f:facet name="header">Edit</f:facet>
-                            <h:commandButton value="Update" styleClass="btn btn-outline-dark" action="#{newCallBean.updateId(c.id)}"/>
+                            <h:commandButton value="Update" styleClass="btn btn-outline-dark btn-sm" action="#{newCallBean.updateId(c.id)}"/>
                         </h:form>
                     </h:column>
 
                     <h:column>
-                        <h:link value="Del" styleClass="btn btn-outline-danger" outcome="logbook.xhtml?removeId=#{c.id}"/>
+                        <h:link value="Del" styleClass="btn btn-outline-danger btn-sm" outcome="logbook.xhtml?removeId=#{c.id}"/>
                     </h:column>
 
                 </h:dataTable>
