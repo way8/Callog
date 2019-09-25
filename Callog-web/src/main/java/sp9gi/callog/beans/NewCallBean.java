@@ -45,7 +45,7 @@ public class NewCallBean implements Serializable {
     }
 
     //method to fill in the from in updateCall.xhtml
-    public void showCall(){
+    public void showCall() {
         CallSignsDAO show = new CallSignsDAO();
         LOGGER.info("ustawiono id w showcall na " + id);
         //we got only one position form DB, so we always want to get index 0 from the list
@@ -64,6 +64,7 @@ public class NewCallBean implements Serializable {
 
     }
 
+
     public String updateCall() {
         CallSignsDAO update = new CallSignsDAO();
         update.updateDB(this.id, this.call_sign, this.operator_name, this.band, this.raport_send, this.raport_received, this.mail, this.date, this.mode, this.confirmation, this.note);
@@ -75,8 +76,9 @@ public class NewCallBean implements Serializable {
         CallSignsDAO delete = new CallSignsDAO();
         delete.deleteCall(this.id);
     }
-//ustawia wartośc id dla strony updateCall ()
-    public String updateId (int idUpd){
+
+    //ustawia wartośc id dla strony updateCall ()
+    public String updateId(int idUpd) {
         this.id = idUpd;
         LOGGER.info("ustawiono id na " + id);
         return "updateCall";
@@ -159,20 +161,36 @@ public class NewCallBean implements Serializable {
         this.password = password;
     }
 
-    public Date getDate() { return date; }
+    public Date getDate() {
+        return date;
+    }
 
-    public void setDate(Date date) { this.date = date; }
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-    public String getMode() { return mode; }
+    public String getMode() {
+        return mode;
+    }
 
-    public void setMode(String mode) { this.mode = mode; }
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
 
-    public String getConfirmation() { return confirmation; }
+    public String getConfirmation() {
+        return confirmation;
+    }
 
-    public void setConfirmation(String confirmation) { this.confirmation = confirmation; }
+    public void setConfirmation(String confirmation) {
+        this.confirmation = confirmation;
+    }
 
-    public String getNote() { return note; }
+    public String getNote() {
+        return note;
+    }
 
-    public void setNote(String note) { this.note = note; }
+    public void setNote(String note) {
+        this.note = note;
+    }
 
 }

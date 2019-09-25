@@ -18,6 +18,10 @@ import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
 
 
+/**
+ *
+ */
+
 @ManagedBean
 @SessionScoped
 public class QslBean implements Serializable {
@@ -38,6 +42,10 @@ public class QslBean implements Serializable {
         this.newCallBean = newCallBean;
     }
 
+    /**
+     *
+     * @return
+     */
     public byte[] process() {
         //image to InputStream
         InputStream eqsl = FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("resources/qsl/sp9gi_eqsl.png");
