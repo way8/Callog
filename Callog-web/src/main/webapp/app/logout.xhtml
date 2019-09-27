@@ -13,7 +13,7 @@
             <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-            <title>primestrap</title>
+            <title>Callog</title>
         </f:facet>
 
         <f:facet name="middle">
@@ -38,7 +38,7 @@
             <p:outputLabel>Do You really want to log out #{request.userPrincipal.name}?</p:outputLabel>
 
             <h:form>
-                <h:commandButton value="Logout" action="#{logoutBacking.submit}"/>
+                <h:commandButton value="Logout" action="#{logoutBacking.submit}" styleClass="btn btn-outline-dark"/>
             </h:form>
 
         </div>

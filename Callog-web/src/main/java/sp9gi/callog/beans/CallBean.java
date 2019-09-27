@@ -19,7 +19,7 @@ public class CallBean implements Serializable{
     private static final long serialVersionUID = 1L;
     private Logger logger = Logger.getLogger("calls");
 
-//    private List<CallSignsDB> List;
+
 
 
     public void addData(){
@@ -44,11 +44,5 @@ public class CallBean implements Serializable{
         logger.info("utworzono obiekt");
         return gett.getUserCallSigns("SP9OZI");
     }
-
-
-
-//    public void setNewsList(List<CallSignsDB> newsList) {
-//        this.newsList = newsList;
-//    }
 
  }

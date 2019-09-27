@@ -12,8 +12,6 @@ public class LogoutBacking {
     public String submit() {
         LOGGER.info("Odpalono submit w LogoutBacking");
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-//        return "../home";
         return "/home.xhtml?faces-redirect=true";
-//        return "../home.xhtml";
     }
 }

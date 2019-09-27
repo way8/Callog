@@ -72,10 +72,10 @@ public class NewCallBean implements Serializable {
         return "logbook";
     }
 
-    public void deleteCall() {
-        CallSignsDAO delete = new CallSignsDAO();
-        delete.deleteCall(this.id);
-    }
+//    public void deleteCall() {
+////        CallSignsDAO delete = new CallSignsDAO();
+////        delete.deleteCall(this.id);
+////    }
 
     //ustawia wartośc id dla strony updateCall ()
     public String updateId(int idUpd) {

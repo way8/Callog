@@ -67,7 +67,7 @@ public class QslBean implements Serializable {
         Graphics2D g2d = img.createGraphics();
         g2d.drawImage(old, 0, 0, w, h, null);
         g2d.setPaint(Color.BLUE);
-        g2d.setFont(new Font("Rockness", Font.BOLD, 45));
+        g2d.setFont(new Font("Rockness", Font.BOLD, 47));
         String cs = newCallBean.getCall_sign();
         //Date to String and subtract one day because of some failure
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -81,11 +81,11 @@ public class QslBean implements Serializable {
         String re = newCallBean.getRaport_received();
         String mo = newCallBean.getMode();
 
-        g2d.drawString(cs, 60, 650);
-        g2d.drawString(da, 320, 650);
-        g2d.drawString(ba, 600, 650);
-        g2d.drawString(re, 730, 650);
-        g2d.drawString(mo, 820, 650);
+        g2d.drawString(cs, 70, 667);
+        g2d.drawString(da, 325, 667);
+        g2d.drawString(ba, 610, 667);
+        g2d.drawString(re, 750, 667);
+        g2d.drawString(mo, 850, 667);
         g2d.dispose();
 
         //saving image on the server in standalone/data folder

@@ -8,7 +8,7 @@
 >
 
 <f:metadata>
-    <f:viewParam name="removeId" value="#{newCallBean.removeId}"/>
+
 </f:metadata>
 
 <h:head>
@@ -18,7 +18,7 @@
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>primestrap</title>
+        <title>Callog</title>
     </f:facet>
 
     <f:facet name="middle">
@@ -38,55 +38,59 @@
 <h:body>
 
     <ui:include src="navigation.xhtml"/>
-<br></br>
+    <div class="page-container">
+        <div class="content-wrap">
+            <br></br>
 
-    <div class="container" align="center">
-    <h:dataTable value="#{calls.callList}" var="c"
-                 styleClass="order-table"
-                 headerClass="order-table-header"
-                 rowClasses="order-table-odd-row,order-table-even-row"
-    >
+            <div class="container" align="center">
+                <h:dataTable value="#{calls.callList}" var="c"
+                             styleClass="order-table"
+                             headerClass="order-table-header"
+                             rowClasses="order-table-odd-row,order-table-even-row"
+                >
 
-        <h:column>
-            <f:facet name="header">Callsign</f:facet>
-            #{c.call_sign}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Callsign</f:facet>
+                        #{c.call_sign}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Name</f:facet>
-            #{c.operator_name}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Name</f:facet>
+                        #{c.operator_name}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Date</f:facet>
-            <h:outputText value="#{c.date}">
-            <f:convertDateTime pattern="dd/MM/yyyy" />
-        </h:outputText>
-         </h:column>
+                    <h:column>
+                        <f:facet name="header">Date</f:facet>
+                        <h:outputText value="#{c.date}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Band</f:facet>
-            #{c.band}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Band</f:facet>
+                        #{c.band}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Mode</f:facet>
-            #{c.mode}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Mode</f:facet>
+                        #{c.mode}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Report received</f:facet>
-            #{c.raport_received}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Report received</f:facet>
+                        #{c.raport_received}
+                    </h:column>
 
-        <h:column>
-            <f:facet name="header">Raport send</f:facet>
-            #{c.raport_send}
-        </h:column>
+                    <h:column>
+                        <f:facet name="header">Raport send</f:facet>
+                        #{c.raport_send}
+                    </h:column>
 
-    </h:dataTable>
+                </h:dataTable>
 
+            </div>
+        </div>
+        <ui:include src="footer.xhtml"/>
     </div>
-    <ui:include src="footer.xhtml"/>
 </h:body>
 </html>

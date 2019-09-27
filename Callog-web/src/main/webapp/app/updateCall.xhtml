@@ -20,7 +20,7 @@
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>primestrap</title>
+        <title>Callog</title>
     </f:facet>
 
     <f:facet name="middle">
@@ -39,8 +39,9 @@
 </h:head>
 <h:body>
     <ui:include src="navigation.xhtml"/>
-
- <br></br>
+    <div class="page-container">
+        <div class="content-wrap">
+            <br></br>
             <fieldset>
 
                 <h:form styleClass="form-horizontal">
@@ -161,7 +162,8 @@
                                              required="true"
                                              requiredMessage="E-mail is required"
                                              validatorMessage="Enter a valid e-mail">
-                                    <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.(com|net|org|edu|pl)"/>
+                                    <f:validateRegex
+                                            pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.(com|net|org|edu|pl)"/>
                                 </h:inputText>
                             </div>
                             <div class="col-md-3"><p:message for="mail"/></div>
@@ -181,9 +183,8 @@
                 </h:form>
             </fieldset>
 
-
-
-
-    <ui:include src="../footer.xhtml"/>
+        </div>
+        <ui:include src="../footer.xhtml"/>
+    </div>
 </h:body>
 </html>

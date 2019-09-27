@@ -47,7 +47,7 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>app/index.xhtml</welcome-file>
+        <welcome-file>home.xhtml</welcome-file>
     </welcome-file-list>
 
     <context-param>
